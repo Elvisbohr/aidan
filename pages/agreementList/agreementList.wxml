@@ -1,0 +1,20 @@
+<view class='pages'>
+  <navigator class="mineList" url="../agreement/agreement">
+    <view class="mineMsg">
+      <text class="mineMsgTxt">用户服务协议</text>
+    </view>
+    <image class="mineRimg" mode="widthFix" src="../../images/rjt.png"></image>
+  </navigator>
+   <navigator class="mineList" url="../merchantServiceAgreement/merchantServiceAgreement">
+    <view class="mineMsg">
+      <text class="mineMsgTxt">商户服务协议</text>
+    </view>
+    <image class="mineRimg" mode="widthFix" src="../../images/rjt.png"></image>
+  </navigator>
+   <navigator class="mineList" url="../legalNotices/legalNotices">
+    <view class="mineMsg">
+      <text class="mineMsgTxt">法律声明</text>
+    </view>
+    <image class="mineRimg" mode="widthFix" src="../../images/rjt.png"></image>
+  </navigator>
+</view>

@@ -1,0 +1,61 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.1",
+	"appid": "wx923af279b0388603",
+	"projectname": "%E7%88%B1%E7%82%B9v2.0",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "制作页面",
+					"pathName": "pages/register/register",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "点餐页",
+					"pathName": "pages/menu/menu",
+					"query": "id=136"
+				},
+				{
+					"id": 2,
+					"name": "结算中心",
+					"pathName": "pages/settle/settle",
+					"query": "shopId=50"
+				},
+				{
+					"id": -1,
+					"name": "订单详情",
+					"pathName": "pages/orderparticulars/orderparticulars",
+					"query": "id=1089"
+				}
+			]
+		}
+	}
+}

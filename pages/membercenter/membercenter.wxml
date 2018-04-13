@@ -1,0 +1,33 @@
+<!--pages/membercenter/membercenter.wxml-->
+<view class="pages">
+  <!-- 头部 -->
+  <view class="memberHead flex vc hc">
+    <image class="memberBj" src="../../images/hy/hybj.png"></image>
+    <view class="mHcont flex ">
+      <view class="mHcL vc hc">
+        <view class="urlImg">
+          <image class="tx"  src="{{userInfo.avatarUrl}}"></image>
+          <image class="vip" src="../../images/hy/g0.png"></image>
+        </view>
+        
+      </view>
+      <view class="mHcR ha hh" >
+        <view class="hyjf">会员积分: <text>9999</text></view>
+        <navigator class="lsqx" url="../memberhistory/memberhistory">查看历史详情 <text>  ></text></navigator>
+      </view>
+    </view>
+  </view>
+  <!-- 头部End -->
+  <!-- 活动列表 -->
+  <view class="hdMain">
+    <view class="hdHead">
+      最新活动
+    </view>
+    <view class="hdList">
+      <image class="hdListImg" mode="widthFix" src="../../images/hy/abaoman.png"></image>
+    </view>
+    
+  </view>
+  <!-- 活动列表 -->
+
+</view>

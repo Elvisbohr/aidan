@@ -1,0 +1,80 @@
+<!--pages/mine/mine.wxml-->
+<view class="pages">
+  <!-- 头部 -->
+  <view class="mineHead">
+    <view class="mineTx">
+      <image wx:if="{{personal.headImg}}" src="{{personal.headImg}}"></image>
+      <image wx:if="{{!personal.headImg}}" src="../../images/headImg.png"></image>
+    </view>
+    <view class="mineName">{{personal.name}}</view>
+    <navigator class="minexx" url="../details/details">个人信息 ></navigator>
+  </view>
+  <image class="mineBj" src="../../images/grbj.png"></image>
+  <!-- 头部 -->
+  <!-- 我的订单 -->
+  <navigator class="mineList" url="../orderform/orderform">
+    <view class="mineMsg">
+      <image class="mineMsgImg" mode="widthFix" src="../../images/ddan.png"></image>
+      <text class="mineMsgTxt">我的订单</text>
+    </view>
+    <image class="mineRimg" mode="widthFix" src="../../images/rjt.png"></image>
+  </navigator>
+  <!-- 我的订单End -->
+  <!-- 会员中心 -->
+  <!-- <navigator class="mineList" url="../membercenter/membercenter">
+    <view class="mineMsg">
+      <image class="mineMsgImg" mode="widthFix" src="../../images/huiy.png"></image>
+      <text class="mineMsgTxt">会员中心</text>
+    </view>
+    <image class="mineRimg" mode="widthFix" src="../../images/rjt.png"></image>
+  </navigator> -->
+  <!-- 会员中心End -->
+  <!-- 优惠券 -->
+  <navigator class="mineList mb15" url="../coupon/coupon">
+    <view class="mineMsg">
+      <image class="mineMsgImg" mode="widthFix" src="../../images/discount.png"></image>
+      <text class="mineMsgTxt">我的优惠券</text>
+    </view>
+    <image class="mineRimg" mode="widthFix" src="../../images/rjt.png"></image>
+  </navigator>
+  <!-- 优惠券End -->
+  <!-- 客服中心 -->
+  <!-- <view class="mineList mb15" bindtap='service'>
+    <view class="mineMsg">
+      <image class="mineMsgImg" mode="widthFix" src="../../images/kefu.png"></image>
+      <text class="mineMsgTxt">客服中心</text>
+    </view>
+    <image class="mineRimg" mode="widthFix" src="../../images/rjt.png"></image>
+  </view> -->
+  <button class="mineList mb15" open-type="contact" session-from="weapp">
+    <view class="mineMsg">
+      <image class="mineMsgImg" mode="widthFix" src="../../images/kefu.png"></image>
+      <text class="mineMsgTxt">客服中心</text>
+    </view>
+    <image class="mineRimg" mode="widthFix" src="../../images/rjt.png"></image>
+  </button>
+  <!-- 客服中心End -->
+  <!-- 协议与说明 -->
+  <navigator class="mineList" url="../agreementList/agreementList">
+    <view class="mineMsg">
+      <image class="mineMsgImg" mode="widthFix" src="../../images/xy.png"></image>
+      <text class="mineMsgTxt">协议与说明</text>
+    </view>
+    <image class="mineRimg" mode="widthFix" src="../../images/rjt.png"></image>
+  </navigator>
+  <!-- 协议与说明End -->
+
+  <!-- 帮助中心 -->
+  <navigator class="mineList" url="../helpcentre/helpcentre">
+    <view class="mineMsg">
+      <image class="mineMsgImg" mode="widthFix" src="../../images/help.png"></image>
+      <text class="mineMsgTxt">帮助中心</text>
+    </view>
+    <image class="mineRimg" mode="widthFix" src="../../images/rjt.png"></image>
+  </navigator>
+  <!-- 帮助中心End -->
+  <!-- kefu -->
+  <!-- <contact-button type="default-light" size="20" session-from="weapp">
+  kefu 
+  </contact-button> -->
+</view>

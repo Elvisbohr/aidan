@@ -1,0 +1,444 @@
+<!--pages/menu/menu.wxml-->
+<view class="pages pageCon">
+    <view class="pageTop">
+        <!--商铺头部-->
+        <view class="menuHead">
+            <view class="menuHleft">
+                <image wx:if="{{shopImg == '' ||shopImg == null}}" class="menuImg" src="../../images/shopmode.png"></image>
+                <image wx:else class="menuImg" src="{{appImg}}{{shopImg}}"></image>
+                <view class="menuName">
+                    <view wx:if="{{takeout.distributeLeastmoney > 0 && takeout.distributeMoney > 0}}" class='takeOut'> 起送 ¥{{takeout.distributeLeastmoney}}
+                        <text>|</text>配送 ¥{{takeout.distributeMoney}}</view>
+                    <view class="sImg">
+                        <image class="simgs" mode="widthFix" src="../../images/tishi.gif"></image>
+                        <view class="promptCont">{{shopInfo.notice}}</view>
+                    </view>
+                </view>
+            </view>
+            <image wx:if="{{attention==0}}" bindtap="attention" class="menuHright" mode="widthFix" src="../../images/attention.png"></image>
+            <image wx:if="{{attention==1}}" bindtap="attention" class="menuHright" mode="widthFix" src="../../images/attentionT.png"></image>
+        </view>
+        <!--商铺头部End-->
+        <!--优惠活动-->
+        <view class='flex vc' wx:if="{{activityIndex > 0}}">
+            <!-- <view class="privilege" wx:if="{{privilege}}"> -->
+            <!-- <view class="privilege">
+                <view class="chit sImg" wx:if="{{iscoupon}}">
+                    <view class="pirIcon y">¥</view>
+                    <view class="chitCont">
+                        代金券:{{coupon}}
+                    </view>
+                </view>
+                <view class="chit sImg" wx:if="{{isdiscount}}">
+                    <view class="pirIcon z">折</view>
+                    <view class="chitCont">
+                        全场{{discount}}
+                    </view>
+                </view>
+                <view class="manjian sImg" wx:if="{{ismoneyoff}}">
+                    <view class="pirIcon j">减</view>
+                    <view class="mjCont">
+                        {{moneyoff}}
+                    </view>
+                </view>
+            </view> -->
+            <!-- 滚动的活动 -->
+            <view class='seamlessscrolling' bindtap='shopActivity' style='height:{{bh}}px;width:{{bw}}px;'>
+                <view style='height:{{direction=="vertical"?bh*clonestr.length:bh}}px;width:{{direction=="horizontal"?bw*clonestr.length:bw}}%;{{horizontal_dire}}:{{bl}}px;{{vertical_dire}}:{{bt}}px;'>
+                    <view wx:for="{{clonestr}}" wx:key="unique" style='height:{{bh}}px;line-height:{{bh}}px;width:{{bw}}px;position:absolute;top:{{direction=="vertical"?index*bh:0}}px;left:{{direction=="horizontal"?index*bw:0}}rpx;'>{{item}}</view>
+                </view>
+            </view>
+            <!--温馨提示-->
+            <view class="Lists">
+                <view bindtap="prompt" class="sImg">
+                    <view class="promptCont">{{activityIndex}}种优惠</view>
+                    <!-- <block wx:if="{{activityIndex > 0}}">
+                        <image class="simgs {{xl?'on':''}}" mode="widthFix" src="../../images/xiaj.png"></image>
+                    </block> -->
+                </view>
+            </view>
+        </view>
+        <view class="chitLists flex" wx:if="{{isQueryChit}}">
+            <view class="chitL">立即领取></view>
+            <view bindtap="chitMoney" class="chitR {{chitR?'on':'off'}}">
+                <view class="chitMoneyList">
+                    ¥
+                    <text class="chitMoney">{{queryChit.money}}</text>
+                    <text>代金券</text>
+                </view>
+                <image wx:if="{{chitR}}" src="../../images/djpbj.png" class="offImg"></image>
+                <image wx:if="{{!chitR}}" src="../../images/djpbj1.png" class="offImg"></image>
+            </view>
+
+        </view>
+        <!--优惠活动End-->
+    </view>
+    <view class="pageBottom">
+        <!--Tab选项卡End-->
+        <view class="menuTab">
+            <view class="weui-navbar">
+                <block wx:for-items="{{tabs}}" wx:key="{{index}}">
+                    <view id="{{index}}" class="menutHead {{activeIndex == index ? 'onTach' : ''}}" bindtap="tabClick">
+                        <view class="weui-navbar__title">{{item}}</view>
+                    </view>
+                </block>
+            </view>
+            <view class="menuTabPanel" style="height:{{menuhieght}}px;">
+                <!--点餐页-->
+                <view class="index" hidden="{{activeIndex != 0}}">
+
+
+                    <view class="cart-tab-wrp">
+                        <view class="cart-item-total cart-tab-item">
+                            <view class="cart-items" bindtap="cartshopbtn">
+                                <view class="cart-item-icon-wrp">
+                                    <image class="cart-item-icon" src="../../images/orderBox.png" />
+                                    <text hidden="{{total.count}}" class="cart-item-total-num bc_red">{{total.count}}</text>
+                                </view>
+                            </view>
+                            <text class="cart-item-total-price">￥{{total.price}}</text>
+                            <!-- <text class="cart-item-yh-price">优惠前价格￥{{total.money}}</text> -->
+                        </view>
+                        <view class="cart-tab-item">
+                            <view bindtap="menuok" open-type="navigate" class="cart-tab-item-btn" hover-class="navigator-hover">选好了</view>
+                        </view>
+                    </view>
+                    <!--下拉之后显示箭头-->
+                    <view class="menushop" hidden="{{!shop}}">
+                        <!--已点餐品-->
+                        <view class="shopmain">
+                            <view class="shopmainHead">
+                                <view class="sheadTit">已选餐品</view>
+                                <view bindtap='emptyShopingCar' class="emptyTit flex vc">
+                                    <image class='ljt' mode='widthFix' src="../../images/ljt.png"></image>
+                                    <view>清空</view>
+                                </view>
+                            </view>
+                            <block wx:for="{{total.list}}">
+                                <block wx:if="{{!item.standard}}">
+                                    <view class="shopList">
+                                        <view class="shopLeft">
+                                            <view class="shopName">{{item.name}}</view>
+                                            <!-- <view class="shopMoney">
+                                                <text class="yyuan">¥</text>{{item.price}}
+                                            </view> -->
+
+                                        </view>
+                                        <view class="shopRight">
+                                            <view class="shopMoney">
+                                                <text class="yyuan">¥</text>{{item.price}}
+                                            </view>
+                                            <view class="dish-item-count" style="">
+                                                <view class="dish-item-tab">
+                                                    <view hidden="{{item.count == 0}}" class="dish-item-count-minus" data-cid="{{item.id}}" data-index="{{index}}" data-type-index="{{item.typeIndex}}" bindtap="minusCount">
+                                                        <image class="image" src="../../images/countMinus.png" />
+                                                    </view>
+                                                </view>
+                                                <view class="dish-item-count-text dish-item-tab">
+                                                    <text hidden="{{item.count == 0}}">{{item.count}}</text>
+                                                </view>
+                                                <view class="dish-item-count-plus" data-cid="{{item.id}}" data-index="{{index}}" data-type-index="{{item.typeIndex}}" bindtap="addCount">
+                                                    <image class="image" src="../../images/countSelAdd.png" />
+                                                </view>
+                                            </view>
+                                        </view>
+                                    </view>
+                                </block>
+                                <block wx:else>
+                                    <block wx:for="{{item.standard}}" wx:for-item="sItem">
+                                        <view class="shopList">
+                                            <view class="shopLeft">
+                                                <view class="shopName">{{item.name}}</view>
+                                                <!-- <view class="shopMoney">
+                                                <text class="yyuan">¥</text>{{item.price}}
+                                            </view> -->
+                                                <view class="spec">
+                                                    <block wx:if="{{sItem.specifications.name}}">({{sItem.specifications.name}})</block>
+                                                    <block wx:if="{{sItem.flavors.name}}">({{sItem.flavors.name}})</block>
+
+                                                </view>
+                                            </view>
+                                            <view class="shopRight">
+                                                <view class="shopMoney">
+                                                    <text class="yyuan">¥</text>{{sItem.specifications.price}}
+                                                </view>
+                                                <view class="dish-item-count" style="">
+                                                    <view class="dish-item-tab">
+                                                        <view hidden="{{sItem.count == 0}}" class="dish-item-count-minus" data-cid="{{item.id}}" data-index="{{index}}" data-type-index="{{item.typeIndex}}" data-id-str="{{sItem.idStr}}" bindtap="minusCount">
+                                                            <image class="image" src="../../images/countMinus.png" />
+                                                        </view>
+                                                    </view>
+                                                    <view class="dish-item-count-text dish-item-tab">
+                                                        <text hidden="{{item.count == 0}}">{{sItem.count}}</text>
+                                                    </view>
+                                                    <view class="dish-item-count-plus" data-cid="{{item.id}}" data-index="{{index}}" data-type-index="{{item.typeIndex}}" data-id-str="{{sItem.idStr}}" bindtap="addCount">
+                                                        <image class="image" src="../../images/countSelAdd.png" />
+                                                    </view>
+                                                </view>
+                                            </view>
+                                        </view>
+                                    </block>
+                                </block>
+                            </block>
+                            <view class="shopFoot"></view>
+                        </view>
+                    </view>
+                    <view class="menu-wrp">
+                        <scroll-view scroll-y="true" class="left-side">
+                            <!--菜单列表-->
+                            <block wx:for="{{menus}}" wx:key="id" wx:for-item="menu">
+                                <view class="menu-item {{menu.curClass}}" data-id="{{index}}" data-tag="{{menu.tag}}" bindtap="selectMenu">
+                                    <view class="menu-item-wrp">
+
+                                        <view>
+                                            <text class="m-item-title">{{menu.name}}</text>
+                                        </view>
+                                    </view>
+                                </view>
+                            </block>
+                            <view class="menu-footer"></view>
+                        </scroll-view>
+                        <scroll-view scroll-y="true" scroll-into-view="{{toView}}" class="right-side">
+                            <view class="dish-header"></view>
+                            <block wx:if="{{menus[selectedMenuId].goodses.length>0}}">
+                                <block wx:for="{{menus[selectedMenuId].goodses}}" wx:key="id" wx:for-item="menu">
+                                    <view>
+                                        <view class="dish-item">
+                                            <view class="dish-item-wrp">
+                                                <view class="dish-item-right">
+                                                    <view class="dish-item-pic">
+                                                        <!--商家图片-->
+                                                        <image class="image" src="{{appImg}}{{menu.img}}" />
+                                                    </view>
+                                                    <view class="dish-item-info" style="">
+                                                        <view>
+                                                            <text class="dish-item-name">{{menu.name}}</text>
+                                                        </view>
+                                                        <view>
+                                                            <text class="dish-item-money">
+                              <text class="yyuan">¥</text> {{menu.price}}</text>
+                                                        </view>
+                                                    </view>
+                                                </view>
+                                                <view class="dish-item-count" style="">
+                                                    <!-- 选择数量 -->
+                                                    <view class="dish-item-msg1" wx:if="{{menu.specifications.length == 0 && menu.flavors.length == 0}}">
+                                                        <!-- <view class="dish-item-msg1"> -->
+                                                        <view class="dish-item-tab">
+                                                            <view hidden="{{menu.count == 0}}" class="dish-item-count-minus" data-id="{{menu.id}}" data-index="{{index}}" data-cid="{{menu.id}}" bindtap="minusCount">
+                                                                <image class="image" src="../../images/countMinus.png" />
+                                                            </view>
+                                                        </view>
+                                                        <view class="dish-item-count-text dish-item-tab">
+                                                            <text hidden="{{menu.count == 0}}">{{menu.count}}</text>
+                                                        </view>
+                                                        <view class="dish-item-count-plus" data-id="{{menu.id}}" data-cid="{{menu.id}}" data-types="top" bindtap="addCount">
+                                                            <image class="image" src="../../images/countSelAdd.png" />
+                                                        </view>
+                                                    </view>
+                                                    <!-- 选择规格 -->
+                                                    <view class="dish-item-msg2" wx:if="{{menu.specifications.length > 0 || menu.flavors.length > 0}}">
+                                                        <view class="selectGg" data-cid="{{menu.id}}" bindtap="selectGg">选规格</view>
+                                                    </view>
+                                                </view>
+                                            </view>
+                                        </view>
+                                        <!--</block>-->
+
+                                    </view>
+                                </block>
+                            </block>
+                            <block wx:else>
+                                <view class="container">
+                                    <image src="../../images/noData.png" mode="widthFix"></image>
+                                    <text>暂无菜品!</text>
+                                </view>
+                            </block>
+
+                            <view class="dish-footer"></view>
+                        </scroll-view>
+                    </view>
+
+
+                </view>
+                <!--点餐页End-->
+                <!--商家页-->
+                <view class="" hidden="{{activeIndex != 1}}">
+                    <view class="shopIndex">
+                        <!--商铺介绍-->
+                        <view class="shopList1">
+                            <view class="shopjs">
+                                <image mode="widthFix" src="../../images/jeishao.png"></image>
+
+                            </view>
+                            <view class="shopjsc w90b" bindtap="jiesao">
+                                <view class="spjs {{jieshao?'':'on'}}">
+                                    {{shopInfo.introduction}}
+                                </view>
+                                <image mode="widthFix" src="../../images/xjt.png"></image>
+                            </view>
+                        </view>
+                        <!--商铺介绍End-->
+                        <!--营业时间-->
+                        <view class="shopList1">
+                            <view class="shopjs">
+                                <image class="timeImg" mode="widthFix" src="../../images/shijian.png"></image>
+
+                            </view>
+                            <view class="shopjsc">
+                                {{shopInfo.businessTime}}
+                            </view>
+                        </view>
+                        <!--营业时间End-->
+                        <!--店铺地址-->
+                        <view class="shopList1 fb" bindtap="shopmap">
+                            <view class="">
+                                <view class="shopjs">
+                                    <image mode="widthFix" src="../../images/dizhi.png"></image>
+                                </view>
+                                <view class="shopjsc">
+                                    {{shopInfo.address}}
+                                </view>
+                            </view>
+                            <image class="partR" mode="widthFix" src="../../images/rjt.png"></image>
+
+                        </view>
+                        <!--店铺地址End-->
+                        <!--店铺电话-->
+                        <view class="shopList1">
+                            <view class="shopjs">
+                                <image mode="widthFix" src="../../images/dianhua.png"></image>
+                            </view>
+                            <view class="shopjsc" bindtap="callUp">
+                                {{shopInfo.telphone}}
+                            </view>
+                        </view>
+                        <!--店铺电话End-->
+                        <!--商家资质-->
+                        <view class="shopapt">
+                            <view class="aptTit">商家资质</view>
+                            <view class="shopList1 shopil">
+                                <view class="shopjs">
+                                    <image mode="widthFix" src="../../images/zheng.png"></image>
+                                </view>
+                                <view class="shopjsc">
+                                    资质证照
+                                </view>
+                            </view>
+                            <view class="patImg">
+                                <image wx:if="{{shopInfo.businessLicenseImg !='' && shopInfo.businessLicenseImg!=undefined}}" bindtap="patImg" class="psimg" data-img="businessLicenseImg" src="{{appImg}}{{shopInfo.businessLicenseImg}}"></image>
+                                <image wx:else class="psimg" data-img="businessLicenseImg" src="../../images/zwsc.png"></image>
+                                <image wx:if="{{shopInfo.licenceImg !='' && shopInfo.licenceImg!=undefined}}" bindtap="patImg" class="psimg" data-img="licenceImg" src="{{appImg}}{{shopInfo.licenceImg}}"></image>
+                                <image wx:else class="psimg" data-img="licenceImg" src="../../images/zwsc.png"></image>
+                            </view>
+                        </view>
+                        <!--商家资质End-->
+                    </view>
+                </view>
+                <!--商家页End-->
+            </view>
+        </view>
+        <!--Tab选项卡-->
+    </view>
+    <!-- 领取代金券成功 -->
+    <view class="chitMain" wx:if="{{chitMain}}">
+        <view class="chitConts">
+            <view class="error" bindtap="error">X</view>
+            <view class="chitImg chitMsg">
+                <image src="../../images/chit.png"></image>
+                <view class="chitHot">¥
+                    <text>{{queryChit.money}}</text>
+                </view>
+            </view>
+            <view class="chitImg shitbut" bindtap="shitbut">
+                <image src="../../images/button.png"></image>
+            </view>
+        </view>
+    </view>
+    <!-- 领取代金券成功End -->
+    <!-- 选规格 -->
+    <view class="specShade" wx:if="{{specShade}}">
+        <view class="specification">
+            <view class="sepcImgOff">
+                <image src="../../images/specOff.png" class="sepcOff" bindtap="specOff"></image>
+            </view>
+
+            <view class="specHead">{{selectSpec.name}}</view>
+            <block wx:if="{{selectSpec.specifications.length > 0}}">
+                <view class="specTit">规格:</view>
+                <view class="specCont">
+                    <block wx:for="{{selectSpec.specifications}}">
+                        <view class="specList {{item.isspec?'up':''}}" data-index="{{index}}" bindtap="spec">
+                            {{item.name}}
+                        </view>
+                    </block>
+                </view>
+            </block>
+            <block wx:if="{{selectSpec.flavors.length > 0}}">
+                <view class="specTit">口味:</view>
+                <view class="specCont">
+                    <block wx:for="{{selectSpec.flavors}}">
+                        <view class="specList {{item.istaste?'up':''}}" data-index="{{index}}" bindtap="taste">
+                            {{item.name}}
+                        </view>
+                    </block>
+                </view>
+            </block>
+            <view class="spectFoot flex hb vc">
+                <view class="sfL">
+                    ¥
+                    <text>{{isPic}}</text>
+                    <block>
+                        <text class="sflMsg" wx:if="{{isspecname != undefind && isspecname != ''}}">({{isspecname}})</text>
+                        <text class="sflMsg" wx:if="{{istastename != undefind && istastename != ''}}">({{istastename}})</text>
+                    </block>
+                </view>
+                <view class="sfR" bindtap="shopcar">
+                    <image class="sfrImg" src="../../images/orderBox.png"></image>
+                    <text>加入购物车</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 选规格End -->
+</view>
+<view class="shopWrap" hidden="{{!shop}}" bindtap="shopbtn"></view>
+<!-- 弹框背景 -->
+<view class='shopActivity' wx:if="{{shopActivity}}" bindtap='closer'></view>
+<view class='shopActivityCont flex vc column' wx:if="{{shopActivity}}">
+    <image class='closer' bindtap='closer' src='../../images/closer.png'></image>
+    <image wx:if="{{shopImg == '' ||shopImg == null}}" class="shopAImg" src="../../images/shopmode.png"></image>
+    <image wx:else class="shopAImg" src="{{appImg}}{{shopImg}}"></image>
+    <view class='shopATit'>{{takeout.shopName}}</view>
+    <view wx:if="{{takeout.distributeLeastmoney > 0 && takeout.distributeMoney > 0}}" class='shopAOut'>
+        起送 ¥{{takeout.distributeLeastmoney}}
+        <text>|</text> 配送 ¥{{takeout.distributeMoney}}
+    </view>
+    <view class='shopAMain' wx:if="{{iscoupon || isdiscount || ismoneyoff}}">
+        <view class="privilege">
+            <view class="chit sImg" wx:if="{{iscoupon}}">
+                <view class="pirIcon y">¥</view>
+                <view class="chitCont">
+                    代金券:{{coupon}}
+                </view>
+            </view>
+            <view class="chit sImg" wx:if="{{isdiscount}}">
+                <view class="pirIcon z">折</view>
+                <view class="chitCont">
+                    全场{{discount}}
+                </view>
+            </view>
+            <view class="manjian sImg" wx:if="{{ismoneyoff}}">
+                <view class="pirIcon j">减</view>
+                <view class="mjCont">
+                    {{moneyoff}}
+                </view>
+            </view>
+        </view>
+
+    </view>
+    <view class='shopAInform'>
+        <view class='shopAInform-tit'>商家公告</view>
+        <view class='shopAInform-list'>{{shopInfo.notice}}</view>
+    </view>
+</view>

@@ -1,0 +1,65 @@
+<!--index.wxml-->
+<view class="pages">
+    <!--头部导航-->
+    <view class="navHead">
+        <!--选择城市-->
+        <!-- <view class="city" bindtap="city" > -->
+        <picker class="city" bindchange="bindCitysChange" value="{{citysIndex}}" range="{{citys}}">
+            <image class="arrowsDown" mode="widthFix" src="../../images/dw.png"></image>
+            <!-- <text>{{city}}</text> -->
+            <text>{{citys[citysIndex]}}</text>
+
+        </picker>
+        <!-- </view> -->
+        <!--选择城市End-->
+        <!--搜索栏-->
+        <view class="importCity">
+            <icon size="12" type="search" bindtap="tapSearch" />
+            <input value="{{searchTerm}}" placeholder="请输入搜索地址或店铺名称" bindconfirm="tapSearch" bindinput="blurInput" bindblur="tapSearchs" />
+        </view>
+        <image class='sweep' bindtap="sweep" src='../../images/sweep.png'></image>
+        <!--搜索栏End-->
+    </view>
+    <!--头部导航End-->
+    <!--轮播图-->
+    <swiper class="banner" autoplay="{{autoplay}}">
+        <block wx:for="{{bannerUrls}}">
+            <swiper-item>
+                <image src="{{appImg}}{{item}}" class="slide-image" />
+            </swiper-item>
+        </block>
+    </swiper>
+    <!--轮播图End-->
+    <!--店铺展示-->
+
+    <scroll-view scroll-y bindscrolltolower="loadMore" style="width:100%;height:{{mainHieght}}px;">
+        <block>
+            <block wx:for="{{merchants}}" wx:for-item="i">
+                <view class="shopCont inner txt" bindtap="shopnav" data-index="{{index}}" style="{{item.txtStyle}}">
+                    <!-- <view> -->
+                    <image wx:if="{{i.shopImg == '' ||i.shopImg == null}}" class="shopleft" src="../../images/shopmode.png"></image>
+                    <image wx:else class="shopleft" src="{{appImg}}{{i.shopImg}}"></image>
+                    <!-- </view> -->
+                    <view class="shopRight">
+                        <view class="shopname">{{i.shopName}}</view>
+                        <view class="shopselect">
+                            <view class="select onOpen" wx:if="{{i.isOpen == 1}}">营业中</view>
+                            <view class="select onff" wx:if="{{i.isOpen == 2}}">休息中</view>
+                            <view class="select onChit" wx:if="{{i.coupon == 1}}">¥</view>
+                            <view class="select onMinus" wx:if="{{i.moneyOff == 1}}">减</view>
+                            <view class="select onDiscount" wx:if="{{i.discount == 1}}">折</view>
+                        </view>
+                        <view class="shopsite flex vc hb">
+                            <!-- <view class='Itemsaddres'>{{i.address}}</view> -->
+                            <view class='Itemsaddres'>{{i.detailedAddress}}</view>
+                            <view class="km">{{i.distance}}</view>
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </block>
+        <view class='loadMore' bindtap='loadMore'>{{moreTit}}</view>
+    </scroll-view>
+
+    <!--店铺展示End-->
+</view>

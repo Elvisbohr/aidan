@@ -1,0 +1,14 @@
+<!--pages/userPhone/userPhone.wxml-->
+<view class="pages">
+  <view class="List">
+    <view class="listL">
+      <text>手机号:</text>
+      <input type="number" class="userPhone" bindblur="userPhone" value="{{userPhone}}" />
+    </view>
+    <view class="listR">
+      <icon bindtap="clear" type="clear" size="20" color="#cccccc" />
+    </view>
+  </view>
+
+  
+</view>

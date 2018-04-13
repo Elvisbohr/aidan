@@ -1,0 +1,414 @@
+/* pages/orderparticulars/orderparticulars.wxss */
+
+page, .pages {
+    height: 100%;
+    background: #efefef;
+    margin-bottom: 80rpx;
+}
+
+.tips {
+    font-size: 20rpx;
+    color: #808080;
+    text-align: center;
+    background: #fff;
+    padding-top: 20rpx;
+}
+
+.orderhead {
+    width: 100%;
+    height: 80rpx;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 56rpx 0;
+    background: #fff;
+    border-bottom: 1px solid #d6d4d4;
+}
+
+.rowNum {
+    position: relative;
+    z-index: 99;
+    width: 126rpx;
+    height: 80rpx;
+}
+
+.qcNum {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 99;
+    font-size: 40rpx;
+    color: #fff;
+    transform: translate(-50%, -35%);
+}
+
+.phImg {
+    width: 126rpx;
+    height: 80rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.heng {
+    width: 1px;
+    height: 80rpx;
+    background: #808080;
+    margin: 0 24rpx;
+}
+
+.partType {
+    font-size: 32rpx;
+}
+
+.partNum {
+    font-size: 30rpx;
+    color: #808080;
+}
+
+/* 排号 */
+
+.orderNum {
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+}
+
+.jv {
+    width: 26rpx;
+    height: 80rpx;
+}
+
+.partyuan {
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 80rpx;
+    height: 80rpx;
+    font-size: 26rpx;
+    border-radius: 40rpx;
+    background: #eb3444;
+    color: #fff;
+}
+
+.partyuan:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 60px;
+    border: 4rpx solid #fff;
+}
+
+.partList {
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 28rpx;
+    padding: 26rpx 35rpx;
+    color: #808080;
+    background: #fff;
+    border-bottom: 1px solid #d6d4d4;
+}
+
+.partL {
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    width: 100%;
+}
+
+.partLi {
+    flex-shrink: 0;
+    width: 25%;
+}
+
+.partDz {
+    width: 80%;
+}
+
+.partR {
+    width: 20rpx;
+    flex-shrink: 0;
+}
+
+.orderTime {
+    background: #ff606f;
+    color: #fff;
+    font-size: 22rpx;
+    padding: 4rpx 6rpx;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 20rpx;
+    border-radius: 4rpx;
+}
+
+/*店铺名称*/
+
+.settleHead {
+    height: 85rpx;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    color: #808080;
+    padding-left: 35rpx;
+    font-size: 32rpx;
+    border-bottom: 1px solid #d6d4d4;
+    background: #fff;
+    margin-top: 36rpx;
+}
+
+/*已选菜品*/
+
+.foodCont {
+    overflow: hidden;
+}
+
+.foodCont.off {
+    max-height: 180rpx;
+}
+
+.foodCont.on {
+    height: auto;
+}
+
+.foodList {
+    height: 90rpx;
+    font-size: 28rpx;
+    color: #454545;
+    padding: 0 30rpx;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+}
+
+/*优惠活动*/
+
+.activity {
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background: #fff;
+    padding-top: 36rpx;
+}
+
+.actl {
+    font-size: 24rpx;
+    color: #454545;
+    /* height: 55rpx; */
+    width: 85%;
+    padding-left: 30rpx;
+    border-bottom: 1px solid #f1f1f1;
+}
+.actls {
+    font-size: 24rpx;
+    color: #454545;
+    /* height: 55rpx; */
+    width: 100%;
+    padding-left: 30rpx;
+    border-bottom: 1px solid #f1f1f1;
+}
+.actr.off {
+    -webkit-animation: offend 1.5s infinite ease-in-out;
+    animation: offend 1.5s infinite ease-in-out;
+}
+
+.foodname {
+    width: 35%;
+    /* text-align: center; */
+    flex-shrink: 0;
+    text-overflow: clip;
+}
+
+.foodbz {
+    width: 45%;
+    /* text-align: center; */
+    flex-shrink: 0;
+}
+
+.foodpart {
+    width: 10%;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.foodmoney {
+    width: 10%;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.totalL {
+    display: -webkit-flex;
+    display: flex;
+}
+
+.ml10 {
+    margin-right: 20rpx;
+}
+
+.actr {
+    width: 50rpx;
+    position: absolute;
+    right: 10rpx;
+    bottom: -10rpx;
+}
+
+.actr.on {
+    transform: rotate(180deg);
+}
+
+.total {
+    height: 80rpx;
+    font-size: 28rpx;
+    padding: 0 30rpx;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+}
+
+.actMain {
+    background: #fff;
+    padding: 30rpx 0 15rpx;
+}
+
+.actList {
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 38rpx 15rpx;
+    font-size: 28rpx;
+}
+
+.actlistL text {
+    border-radius: 3px;
+    color: #fff;
+    width: 35rpx;
+    height: 35rpx;
+    line-height: 35rpx;
+    display: inline-block;
+    text-align: center;
+    margin-right: 15rpx;
+}
+
+.actlistL .actZ {
+    background: #6dd36b;
+}
+
+.actlistL .actD {
+    background: #ff8688;
+}
+
+.actlistL .actJ {
+    background: #fbaf33;
+}
+
+.actlistR {
+    color: #d93035;
+}
+
+/* 备注 */
+
+.bz {
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    font-size: 28rpx;
+    padding: 20rpx 30rpx;
+    margin-top: 30rpx;
+    color: #808080;
+}
+
+.bzL {
+    flex-shrink: 0;
+}
+
+.bzR {
+    width: 80%;
+    margin-left: 30rpx;
+}
+
+.sf {
+    font-size: 32rpx;
+}
+
+/* 底部付款框 */
+
+.orderFoot {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    width: 100%;
+    height: 80rpx;
+    z-index: 99;
+    justify-content: flex-end;
+}
+
+.cancelOrder {
+    padding: 4rpx 16rpx;
+    color: #808080;
+    border: 1px solid #d6d4d4;
+    margin-right: 40rpx;
+    border-radius: 30rpx;
+    font-size: 24rpx;
+}
+
+.payOrder {
+    padding: 4rpx 16rpx;
+    color: #fbaf33;
+    border: 1px solid #fbaf33;
+    margin-right: 40rpx;
+    border-radius: 30rpx;
+    font-size: 24rpx;
+}
+
+.cont {
+    margin-bottom: 100rpx;
+}
+
+.take-out {
+    border: 1px solid #efefef;
+    background: #fff;
+    padding: 26rpx 35rpx;
+}
+
+.outList {
+    font-size: 26rpx;    
+    color: #808080;    
+    align-items:flex-start;
+    margin-bottom: 50rpx;
+}
+.listTit{
+    font-weight: bold;
+}
+.listCont{
+    max-width: 55%;
+    flex-shrink: 0;
+    /* text-align: right; */
+}
+.outTit{
+    color: #313131;
+    font-size: 28rpx;
+    font-weight: bold;
+    height: 60rpx;
+    line-height: 60rpx;
+}
+.shopPhone{
+    margin-right: 60rpx;
+}

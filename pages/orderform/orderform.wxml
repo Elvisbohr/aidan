@@ -1,0 +1,27 @@
+<!--pages/orderform/orderform.wxml-->
+<view class="pages">
+  <block wx:for="{{orderList}}"  wx:for-item="i">
+  <navigator url="../orderparticulars/orderparticulars?id={{i.id}}" class="orderList" bindlongpress="onDel" data-id="{{i.id}}">
+    <view class="orderLeft">
+      <!-- <image class="shopImg" src="../../images/shopmode.png"></image> -->
+      <image wx:if="{{i.shopImg == '' ||i.shopImg == null}}" class="shopImg" src="../../images/shopmode.png"></image>
+      <image wx:else class="shopImg" src="{{appImg}}{{i.shopImg}}"></image>
+      <view class="orderShop">
+        <view class="shopName">{{i.shopName}}</view>
+        <view class="shopTime">点餐时间:  {{i.createTime}}</view>
+        <view class="shopMoney">总价:  {{i.payAmount}}</view>
+      </view>
+    </view>
+    <view class="orderRight">
+      <view class="orderSelect {{i.ordertype}}">{{i.msg}}</view>
+      <view class="orderMore" hidden="{{order !=2}}">再来一单</view>
+    </view>
+  </navigator>
+  </block>
+  <!-- 没有订单 -->
+   <view class="none" wx:if="{{!orderList.length}}">
+    <image class="nsc" mode="widthFix" src="../../images/nullOrder.png"></image>
+    <view class="ntit">您的订单都是空空哒!</view>
+  </view>
+  <!-- 没有订单End -->
+</view>

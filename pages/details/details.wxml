@@ -1,0 +1,32 @@
+<!--pages/details/details.wxml-->
+<view class="pages">
+  <view class="List bm">
+    <view class="listL">头像</view>
+    <view class="listR">
+       <image wx:if="{{userInfo.headImg}}" class="userImg 1" bindtap="UpuserImg" src="{{userInfo.headImg}}"></image> 
+       <image wx:if="{{!userInfo.headImg}}" class="userImg 2" bindtap="UpuserImg" src="../../images/headImg.png"></image> 
+      <image class="rjt" mode="widthFix" src="../../images/rjt.png"></image>
+    </view>
+  </view>
+  <navigator url="../userName/userName?userName={{userInfo.name}}&id={{userInfo.id}}" class="List bm">
+    <view class="listL">用户名</view>
+    <view class="listR">
+      <view class="userName">{{userInfo.name}}</view>
+      <image class="rjt" mode="widthFix" src="../../images/rjt.png"></image>
+    </view>
+  </navigator>
+  <navigator url="../userBirthday/userBirthday?userBirthday={{userInfo.birthday}}&id={{userInfo.id}}" class="List bm">
+    <view class="listL">生日</view>
+    <view class="listR">
+      <view class="userBirthday">{{userInfo.birthday}}</view>
+      <image class="rjt" mode="widthFix" src="../../images/rjt.png"></image>
+    </view>
+  </navigator>
+  <navigator url="../userPhone/userPhone?userPhone={{userInfo.phone}}&id={{userInfo.id}}" class="List bm">
+    <view class="listL">手机号</view>
+    <view class="listR">
+      <view class="userPhone">{{userInfo.phone}}</view>
+      <image class="rjt" mode="widthFix" src="../../images/rjt.png"></image>
+    </view>
+  </navigator>
+</view>

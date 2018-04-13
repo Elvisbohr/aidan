@@ -1,0 +1,75 @@
+/* pages/membercenter/membercenter.wxss */
+.memberHead{
+  position: relative;
+  width: 100%;
+  height: 250rpx;
+}
+.memberBj{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 250rpx;
+}
+.mHcont{
+  position: relative;
+  z-index: 99;
+}
+.mHcL{
+ width: 100rpx;
+ height: 100rpx; 
+ border-radius: 50rpx;
+ background: rgba(255,255,255,0.5);
+ display: -webkit-inline-flex;
+ display: inline-flex;
+}
+.mHcL .urlImg{
+  width: 92rpx;
+  height: 92rpx;
+  border-radius: 46rpx;
+  position: relative;
+}
+.mHcL .urlImg .tx{
+  width: 100%;
+  height: 100%;
+  border-radius: 46rpx
+}
+.mHcL .urlImg .vip{
+  position: absolute;
+  bottom: -6rpx;
+  right: -10rpx;
+  width: 30rpx;
+  height: 30rpx;
+
+}
+.mHcR{
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  margin-left: 20rpx;
+}
+.hyjf{
+  font-size: 32rpx;
+  color: #fff;
+}
+.lsqx{
+  font-size: 22rpx;
+  color: #fff;
+}
+/* 活动列表 */
+.hdMain{
+  padding: 20rpx;
+  padding-top: 0; 
+}
+.hdList{
+  width: 100%;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+.hdHead{
+  color: #9d9d9d;
+  font-size: 24rpx;
+  padding: 15rpx 0 4rpx 0;
+}
+.hdListImg{
+  width: 100%;
+}

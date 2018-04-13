@@ -1,0 +1,29 @@
+<!--pages/shippingAddress/shippingAddress.wxml-->
+<view class='pages'>
+    <!-- 地址列表 -->
+    <view class='addressMain'>
+        <radio-group class="radio-group" bindchange="radioChange">
+            <block>
+                <view class='addressList flex vc hb'>
+                    <view class='flex vc'>
+                        <radio value="" checked="" />
+                        <view class='addressType'>
+                            <view class='typeTop'>姓名</view>
+                            <view class='typeBtm'>收货地址</view>
+                        </view>
+                    </view>
+                    <image class='typeRedact' mode='widthFix' src='../../images/redact.png'></image>
+                </view>
+            </block>
+        </radio-group>
+    </view>
+    <!-- 新增地址 -->
+    <!-- <navigator url='../newShippingAddress/newShippingAddress' class='addSite flex vc hc'>
+        <image class='addIcon' mode='widthFix' src='../../images/addSite.png'></image>
+        <view class='addTxt'>新增收货地址</view>
+    </navigator> -->
+    <view bindtap='chooseAddress' url='../newShippingAddress/newShippingAddress' class='addSite flex vc hc'>
+        <image class='addIcon' mode='widthFix' src='../../images/addSite.png'></image>
+        <view class='addTxt'>新增收货地址</view>
+    </view>
+</view>

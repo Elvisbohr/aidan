@@ -1,0 +1,413 @@
+/* pages/settle/settle.wxss */
+
+page, .pages {
+    width: 100%;
+    height: 100%;
+    background: #ebebeb;
+}
+
+.pages {
+    padding-bottom: 100rpx;
+}
+
+/*头部*/
+
+.settleHead {
+    height: 85rpx;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    color: #808080;
+    padding-left: 35rpx;
+    font-size: 36rpx;
+    border-bottom: 1px solid #d6d4d4;
+    background: #fff;
+}
+
+/*已选菜品*/
+
+.foodCont {
+    overflow: hidden;
+}
+
+.foodCont.off {
+    max-height: 180rpx;
+}
+
+.foodCont.on {
+    max-height: auto !important;
+    height: auto;
+}
+
+.foodList {
+    height: 90rpx;
+    font-size: 28rpx;
+    color: #454545;
+    padding: 0 30rpx;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+}
+
+.foodname {
+    width: 25%;
+    flex-shrink: 0;
+    text-overflow: clip;
+}
+
+.foodbz {
+    width: 47%;
+    flex-shrink: 0;
+}
+
+.foodpart {
+    width: 11%;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.foodmoney {
+    width: 17%;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/*优惠活动*/
+
+.activity {
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background: #fff;
+    /* padding-top: 36rpx; */
+}
+
+.totalL {
+    display: -webkit-flex;
+    display: flex;
+}
+
+.ml10 {
+    margin-right: 20rpx;
+}
+
+.actl {
+    font-size: 24rpx;
+    color: #454545;
+    height: 55rpx;
+    width: 86%;
+    padding-left: 30rpx;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.actr {
+    width: 50rpx;
+    position: absolute;
+    right: 10rpx;
+    bottom: -10rpx;
+}
+
+.actr.on {
+    /* transform:rotate(180deg); */
+    -webkit-animation: start 1.5s infinite ease-in-out;
+    animation: start 1.5s infinite ease-in-out;
+}
+
+.actr.off {
+    -webkit-animation: offend 1.5s infinite ease-in-out;
+    animation: offend 1.5s infinite ease-in-out;
+}
+
+.total {
+    height: 80rpx;
+    font-size: 28rpx;
+    padding: 0 30rpx;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+}
+
+.actMain {
+    background: #fff;
+    padding: 15rpx 0 15rpx;
+}
+
+.actList {
+    align-items: center;
+    height: 90rpx;
+    font-size: 28rpx;
+    padding: 0 30rpx;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.actSelect {
+    /* width: 100%; */
+    box-sizing: border-box;
+    color: #808080;
+}
+
+.actSelect .actSelectPicker {
+    font-size: 28rpx;
+    width: 100%;
+    text-align: right;
+    color: #5a5a5a;
+}
+
+.minjt {
+    width: 26rpx;
+}
+
+/*就餐方式*/
+
+.waylist {
+    width: 100%;
+    background: #fff;
+    padding: 0 30rpx 25rpx;
+    margin-top: 24rpx;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.waylist .title {
+    font-size: 12px;
+    margin-bottom: 12rpx;
+    color: #717070;
+    height: 70rpx;
+    line-height: 70rpx;
+}
+
+.way {
+    width: 100%;
+    height: 100rpx;
+}
+
+.way .ts {
+    border: 1px solid #d4d4d4;
+    border-radius: 5px 0 0 5px;
+}
+
+.way .wd {
+    border: 1px solid #d4d4d4;
+    border-left: 1px solid transparent;
+    margin-left: -1px;
+}
+.way .wd.bradiu{
+     border-radius: 0 5px 5px 0;
+}
+
+.way .wm {
+    border: 1px solid #d4d4d4;
+    border-left: 1px solid transparent;
+    border-radius: 0 5px 5px 0;
+    margin-left: -1px;
+}
+
+.way .pic {
+    margin-right: 6rpx;
+}
+
+.way .ts, .way .wd, .way .wm {
+    /* width: 33.333%; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #808080;
+}
+
+.way .ts.on, .way .wd.on, .way .wm.on {
+    color: #d93035;
+    border-color: #d93035;
+}
+
+.way image {
+    width: 42rpx;
+    display: block;
+}
+
+/*就餐方式*/
+
+/* .jslist {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    margin-top: 20rpx;
+    height: 70rpx;
+    padding: 0 30rpx;
+    color: #808080;
+    font-size: 28rpx;
+} */
+
+.jslist {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    height: 100rpx;
+    padding: 0 30rpx;
+    color: #808080;
+    font-size: 28rpx;
+    border-top: 1px solid #ebebeb;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.lxL {
+    width: 25%;
+}
+
+.lxL text {
+    color: #d93035;
+}
+
+.lxR {
+    width: 75%;
+    height: 100rpx;
+    line-height: 100rpx;
+}
+
+/*底部浮动*/
+
+.cart-tab-wrp {
+    height: 100rpx;
+    position: fixed;
+    bottom: 0rpx;
+    background: #5a5a5a;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    z-index: 10;
+    color: black;
+    /*display:none;*/
+}
+
+.cart-item-total {
+    padding-left: 30rpx;
+}
+
+.cart-item-icon-wrp {
+    width: 110rpx;
+    height: 90rpx;
+    position: absolute;
+    top: -4rpx;
+}
+
+.cart-item-icon {
+    width: 90rpx;
+    height: 90rpx;
+}
+
+.cart-item-total-num {
+    display: inline-block;
+    width: 36rpx;
+    height: 36rpx;
+    font-size: 22rpx;
+    color: white;
+    line-height: 36rpx;
+    border-radius: 36rpx;
+    text-align: center;
+    position: absolute;
+    right: 2rpx;
+    background: #fe7820;
+}
+
+.cart-item-total-price {
+    display: inline-block;
+    width: 40rpx;
+    height: 40rpx;
+    font-size: 40rpx;
+    color: #fff;
+    line-height: 100rpx;
+    text-align: center;
+}
+
+.cart-tab-item-btn {
+    width: 200rpx;
+    display: block;
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 32rpx;
+    font-weight: bold;
+    border-radius: 0;
+    background: #e4333d;
+    color: #fff;
+    float: right;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.cart-tab-item {
+    width: 375rpx;
+    color: #fff;
+}
+
+.formbtn {
+    position: absolute;
+    right: 0;
+}
+
+.xpm {
+    margin-bottom: 100rpx;
+}
+
+.location {
+    height: 70rpx;
+}
+
+.l-icon {
+    width: 30rpx;
+}
+
+.l-left {
+    width: 90%;
+    height: inherit;
+}
+
+.l-txt {
+    color: #808080;
+    font-size: 26rpx;
+    margin-left: 20rpx;
+}
+
+.location {
+    width: 100%;
+    height: auto;
+    min-height: 100rpx;
+    padding: 20rpx 30rpx;
+    border-top: 1px solid #ebebeb;
+    background: #fff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.l-type {
+    margin-left: 20rpx;
+    width: 88%;
+}
+
+.typeTop {
+    color: #454545;
+    font-size: 28rpx;
+    font-weight: bold;
+}
+
+.typeBottom {
+    font-size: 24rpx;
+    color: #808080;
+}
+
+.typeBottom text {
+    padding-right: 10rpx;
+}

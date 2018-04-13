@@ -1,0 +1,28 @@
+<!--pages/helpcentre/helpcentre.wxml-->
+<view class="pages">
+  <view class="helpMain">
+    <block wx:for="{{helpcenter}}">
+      <view class="helpHead">{{item.helphead}}</view>
+      <view class="helpList">
+        <block wx:for="{{item.helpxz}}">
+          <view class="helptit">{{item}}</view>
+        </block>
+      </view>
+      <view class="helpList">
+        <block wx:for="{{item.helphow}}">
+          <view class="helptit">{{item}}</view>
+        </block>
+      </view>
+      <view class="helpList">
+        <block wx:for="{{item.helpwt}}">
+          <view class="helptit">{{item}}</view>
+        </block>
+      </view>
+      <view class="helpList">
+        <block wx:for="{{item.helpwts}}">
+          <view class="helptit">{{item}}</view>
+        </block>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,180 @@
+<!--pages/orderparticulars/orderparticulars.wxml-->
+<view class="pages">
+    <view class='cont'>
+        <!-- 顶部提示 -->
+        <view class="tips">如您下单10分钟内商家没有接单，则该订单自动被取消</view>
+        <!-- 头部 -->
+        <view class="orderhead">
+            <view class="orderNum">
+                <image class="jv" src="../../images/cha.png"></image>
+                <view class="partyuan">
+                    <block wx:if="{{detail.order.status != 1}}">
+                        {{detail.order.takeFoodNo}}
+                    </block>
+                </view>
+                <image class="jv" src="../../images/dao.png"></image>
+            </view>
+            <!-- 横线 -->
+            <view class="heng"></view>
+            <!-- 订单状态 -->
+            <view class="numType">
+                <view class="partType">{{detail.order.msg}}</view>
+                <view class="partNum">{{ordertype}}
+                    <text wx:if="{{detail.order.tableNum}}">{{detail.order.tableNum}}号桌</text>
+                </view>
+            </view>
+        </view>
+        <block wx:if="{{ordertype == '堂食' || ordertype =='自取'}}">
+            <!-- 订单号 -->
+            <view class="partList">
+
+                <view class="partL">
+                    <view class="partLi">订单号 </view>
+                    <view class=""> {{detail.order.orderNo}}</view>
+                </view>
+            </view>
+            <!-- 取餐时间 -->
+            <view class="partList">
+
+                <view class="partL">
+                    <view class="partLi">取餐时间 </view>
+                    <view class=""> {{detail.order.takeFoodtime }}</view>
+                    <view wx:if="{{isOrderTime > 20}}" class="orderTime">预</view>
+                </view>
+            </view>
+            <!-- 取餐地址 -->
+            <view class="partList" bindtap="shopmap">
+                <view class="partL">
+                    <view class="partLi">取餐地址 </view>
+                    <view class="partDz"> {{detail.shop.address}}{{detail.shop.detailedAddress}}</view>
+                </view>
+                <!-- <image class="partR" mode="widthFix" src="../../images/rjt.png"></image> -->
+            </view>
+            <!-- 联系商家 -->
+            <view class="partList" bindtap="call">
+                <view class="partL">
+                    <view class="partLi">联系商家 </view>
+                    <view class=""> {{detail.shop.shopPhone}}</view>
+                </view>
+                <image class="partR" mode="widthFix" src="../../images/rjt.png"></image>
+            </view>
+        </block>
+        <!-- 菜品详情 -->
+        <!--店铺名-->
+        <view class="settleHead">
+            {{detail.order.shopName}}
+        </view>
+        <!--店铺名End-->
+        <!--已选菜品-->
+        <view class="foodCont {{upmore?'off ':'on'}}">
+            <block wx:for="{{detail.order.goods}}">
+                <view class="foodList">
+                    <view class="foodname">{{item.goodsName}}</view>
+                    <view class="foodbz">
+                        <block wx:if="{{item.goodsSpecificationName}}">({{item.goodsSpecificationName}})</block>
+                        <block wx:if="{{item.goodsFlavorName}}">({{item.goodsFlavorName}})</block>
+                    </view>
+                    <view class="foodpart">X{{item.num}}</view>
+                    <view class="foodmoney">¥{{item.price}}</view>
+                </view>
+            </block>
+            <view class="foodList" wx:if="{{detail.order.boxesAmount}}">
+                <view class="foodname">餐盒费</view>
+                <view class="foodbz"></view>
+                <view class="foodpart"></view>
+                <view class="foodmoney">¥{{detail.order.boxesAmount}}</view>
+            </view>
+            <view class="foodList" wx:if="{{detail.order.distributeAmount}}">
+                <view class="foodname">外卖费</view>
+                <view class="foodbz"></view>
+                <view class="foodpart"></view>
+                <view class="foodmoney">¥{{detail.order.distributeAmount}}</view>
+            </view>
+        </view>
+        <!--已选菜品End-->
+        <!--优惠活动-->
+        <view class="activity">
+            <view class="{{detail.order.goods.length > 2?'actl':'actls'}}"></view>
+            <image wx:if="{{detail.order.goods.length > 2}}" bindtap="upmore" class="actr {{upmore?'off':'on'}}" mode="widthFix" src="../../images/xiaj.png"></image>
+        </view>
+        <view class="actMain">
+            <view class="actList" wx:if="{{zk}}">
+                <view class="actlistL">
+                    <text class="actZ">折</text>店铺折扣</view>
+                <view class="actlistR">-¥
+                    <text>{{zk.preferentialAmount}}</text>
+                </view>
+            </view>
+            <view class="actList" wx:if="{{djp}}">
+                <view class="actlistL">
+                    <text class="actD">¥</text>代金券</view>
+                <view class="actlistR">-¥
+                    <text>{{djp.preferentialAmount}}</text>
+                </view>
+            </view>
+            <view class="actList" wx:if="{{mj}}">
+                <view class="actlistL">
+                    <text class="actJ">减</text>满减活动</view>
+                <view class="actlistR">-¥
+                    <text>{{mj.preferentialAmount}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="total">
+            <view class="totalL">
+                <view class="ml10">合计:¥
+                    <text>{{detail.order.total}}</text>
+                </view>
+                <view class="">优惠:¥
+                    <text>{{detail.order.preferAmount}}</text>
+                </view>
+            </view>
+            <view class="sf">实付:¥
+                <text>{{detail.order.payAmount}}</text>
+            </view>
+        </view>
+        <!--优惠活动End-->
+        <!-- 备注 -->
+        <view class="bz" wx:if="{{detail.order.comments != null}}">
+            <view class="bzL">
+                备注:
+            </view>
+            <view class="bzR">{{detail.order.comments}}</view>
+        </view>
+
+        <!-- 外卖状态时 -->
+        <block wx:if="{{ordertype == '外卖'}}">
+            <view class='take-out'>
+                <view class='outTit'>配送信息</view>
+                <view class='outList flex vc hb'>
+                    <view class='listTit'>收货地址</view>
+                    <view class='listCont'>
+                        <view>{{detail.order.orderProvince}}{{detail.order.orderCity}}{{detail.order.orderCountry}}{{detail.order.orderAddress}}</view>
+                    </view>
+                </view>
+                <view class='outList flex vc hb'>
+                    <view class='listTit'>收货人信息</view>
+                    <view>{{detail.order.customerName}} {{detail.order.contactNumber}}</view>
+                </view>
+                <view class='outList flex vc hb'>
+                    <view class='listTit'>下单时间</view>
+                    <view class='listCont'>{{detail.order.createTime}}</view>
+                </view>
+                <view class='outList flex vc hb' bindtap="call">
+                    <view class='listTit'>联系商家</view>
+                    <view class='listCont flex vc'>
+                        <view class="shopPhone"> {{detail.shop.shopPhone}}</view>
+                        <image class="partR" mode="widthFix" src="../../images/rjt.png"></image>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <!-- 付款框 -->
+    <block wx:if="{{detail.order.status == 1}}">
+        <view class="orderFoot flex vc ">
+            <view class='cancelOrder' bindtap='cancelOrder'>取消订单</view>
+            <view class='payOrder' bindtap='payOrder'>付款</view>
+        </view>
+    </block>
+</view>

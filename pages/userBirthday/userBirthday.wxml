@@ -1,0 +1,10 @@
+<!--pages/userBirthday/userBirthday.wxml-->
+<view class="pages">
+  <view class="cont">
+    <picker mode="date" value="{{userBirthday}}" bindchange="bindBirthday">
+    <view class="picker">
+       {{userBirthday}}
+    </view>
+  </picker>
+  </view>
+</view>

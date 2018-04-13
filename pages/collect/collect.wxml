@@ -1,0 +1,31 @@
+<!--pages/collect/collect.wxml-->
+<view class="pages">
+    <view wx:for="{{collect}}" wx:key="{{index}}" class="collect">
+        <view url="../menu/menu?id={{i.shopId}}" class="shopCont txt" catchlongpress="delItem" bindtap="shopnav" data-id="{{item.shopId}}" data-name="{{item.shopName}}" data-index="{{index}}">
+            <!-- <view> -->
+            <image wx:if="{{item.shopImg == '' ||item.shopImg == null}}" class="shopleft" src="../../images/shopmode.png"></image>
+            <image wx:else class="shopleft" src="{{appImg}}{{item.shopImg}}"></image>
+            <!-- </view> -->
+            <view class="shopRight">
+                <view class="shopname">{{item.shopName}}</view>
+                <view class="shopselect">
+                    <view class="select onOpen" wx:if="{{item.isOpen == 1}}">营业中</view>
+                    <view class="select onOff" wx:if="{{item.isOpen == 2}}">休息中</view>
+                    <view class="select onChit" wx:if="{{item.coupon == 1}}">¥</view>
+                    <view class="select onMinus" wx:if="{{item.moneyOff == 1}}">减</view>
+                    <view class="select onDiscount" wx:if="{{item.discount == 1}}">折</view>
+                </view>
+                <view class="shopsite flex vc hb">
+                    <!-- <text>{{item.address}}{{item.detailedAddress}}</text> 详细地址 -->
+                    <view class='Itemsaddres'>{{item.address}}</view>
+                    <view class="km">{{item.distance}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="none" wx:if="{{!collect.length}}">
+        <image class="nsc" mode="widthFix" src="../../images/sc.png"></image>
+        <view class="ntit">收藏夹里都是空空哒!</view>
+        <view class="ntit">点击店铺右上角红心收藏</view>
+    </view>
+</view>

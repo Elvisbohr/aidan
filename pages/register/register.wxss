@@ -1,0 +1,374 @@
+
+page,.pages{
+  width: 100%;
+  height: 100%;
+}
+image {
+    width: 100%;
+    display: block;
+}
+
+
+
+/* flex布局  */
+
+.flex {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.column {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+.vc {
+    -webkit-align-content: center;
+    align-content: center;
+}
+
+.ha {
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+}
+
+.hb {
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+
+.hc {
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.shrink0 {
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+    background: -moz-radial-gradient(30% 40% at 50% 15%, #ff6941, #fe603d, #fd4932);
+    background: -webkit-gradient(radial, 30% 40% at 50% 15%, #ff6941, #fe603d, #fd4932);
+    background: -webkit-radial-gradient(30% 40% at 50% 15%, #ff6941, #fe603d, #fd4932);
+    background: -o-radial-gradient(30% 40% at 50% 15%, #ff6941, #fe603d, #fd4932);
+    background: -ms-radial-gradient(30% 40% at 50% 15%, #ff6941, #fe603d, #fd4932);
+    background: radial-gradient(30% 40% at 50% 15%, #ff6941, #fe603d, #fd4932);
+}
+
+.container .wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.container .bjimg{
+   width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: 0 bottom;
+}
+.container .s-wrap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.logo {
+    width: 64%;
+    margin: 0 auto;
+}
+
+.form-wrap {
+    height: 90%;
+    padding: 0 2.8rem 2.9375rem;
+    box-sizing: border-box;
+    position: relative;
+    margin-top: -2rem;
+    overflow: hidden;
+}
+
+.form-wrap view {
+    font-weight: normal;
+    color: #fff;
+    font-size: 28rpx;
+    margin-bottom: 0.9375rem;
+    line-height: 1.5rem;
+}
+
+ .form-wrap .input-box{
+    display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  padding: 16rpx 30rpx;
+  background: #fff;
+   color: rgb(98, 98, 98);
+   border-radius: 12rpx;
+}
+ .form-wrap .input-box.btn-box {
+    position: absolute;
+    display: block;
+    bottom: 2rem;
+    left: 2.8rem;
+    right: 2.8rem;
+    width: auto;
+}
+.tit{
+  font-size: 36rpx !important;
+}
+.form-wrap .btn-box .btn {
+    background: #f5a218;
+    color: #fff;
+    -webkit-appearance : none ;
+    text-align: center;
+    width: 100%;
+    border-radius: 12rpx;
+    margin-bottom: 0.9375rem;
+    padding: 0 5px;
+    box-sizing: border-box;
+    display: block;
+    outline: none;
+    border: 0;
+}
+
+.form-wrap .input-box .btn.disable {
+    background: #a0a0a0;
+} 
+
+
+.cube {
+    position: absolute;
+    top: 0;
+    border-radius: 5px;
+    background: -ms-linear-gradient(left, #fd4b33, #ff6b42);
+    background: -webkit-gradient(linear, left top, right top, #fd4b33, #ff6b42);
+    background: -webkit-linear-gradient(left, #fd4b33, #ff6b42);
+    background: linear-gradient(left, #fd4b33, #ff6b42);
+    box-shadow: 0px 0px 10px rgba(195, 22, 0, 0.4);
+    transform: rotate(45deg);
+    -webkit-animation-name: bounceIn;
+    -moz-animation-name: bounceIn;
+    -o-animation-name: bounceIn;
+    animation-name: bounceIn;
+    -webkit-animation-duration: 18s;
+    -moz-animation-duration: 18s;
+    -o-animation-duration: 18s;
+    animation-duration: 18s;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    -o-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    -o-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -o-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+.cube1 {
+    width: 6.8rem;
+    height: 6.8rem;
+    left: auto;
+    right: -5%;
+    top: 20%;
+    /*top: 18%;*/
+}
+
+.cube2 {
+    width: 2rem;
+    height: 2rem;
+    left: 0;
+    top: 10%;
+    -webkit-animation-delay: 3s;
+    -moz-animation-delay: 3s;
+    -o-animation-delay: 3s;
+    animation-delay: 3s;
+    /*top: 33%;*/
+}
+
+.cube3 {
+    width: 2.5rem;
+    height: 2.5rem;
+    left: 37%;
+    top: 18%;
+    -webkit-animation-delay: 7s;
+    -moz-animation-delay: 7s;
+    -o-animation-delay: 7s;
+    animation-delay: 7s;
+    /*top: 47%;*/
+}
+
+.cube4 {
+    width: 4.6rem;
+    height: 4.6rem;
+    left: 57%;
+    top: 11%;
+    -webkit-animation-delay: 11s;
+    -moz-animation-delay: 11s;
+    -o-animation-delay: 11s;
+    animation-delay: 11s;
+    /*top:  58.4%;*/
+}
+
+.cube5 {
+    width: 4.6rem;
+    height: 4.6rem;
+    left: -1%;
+    top: 6%;
+    -webkit-animation-delay: 17s;
+    -moz-animation-delay: 17s;
+    -o-animation-delay: 17s;
+    animation-delay: 17s;
+    /*top: 67.4%;*/
+}
+
+@keyframes bounceIn {
+    0%,
+    4%,
+    8%,
+    12%,
+    16%,
+    20% {
+        animation-timing-function: cubic-bezier(.215, .61, .355, 1)
+    }
+    0% {
+        opacity: 0;
+        transform: scale3d(.3, .3, .3) rotate(45deg);
+    }
+    4% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate(45deg);
+    }
+    8% {
+        transform: scale3d(.9, .9, .9) rotate(45deg);
+    }
+    12% {
+        opacity: 1;
+        transform: scale3d(1.03, 1.03, 1.03) rotate(45deg);
+    }
+    16% {
+        transform: scale3d(.97, .97, .97) rotate(45deg);
+    }
+    20% {
+        opacity: 1;
+        transform: scaleX(1) rotate(45deg);
+        top: 0;
+    }
+    80% {
+        opacity: 1;
+        top: 60%;
+    }
+    to {
+        transform: scaleX(1) rotate(360deg);
+        top: 80%;
+        opacity: 0;
+    }
+}
+
+/*  弹窗  */
+.popup{
+    /* display: none; */
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+}
+.popup .mask{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+.popup .wrap{
+    position: absolute;
+    top: 4rem;
+    left: 1.6rem;
+    right: 1.6rem;
+    bottom: 4rem;
+    background: #fff;
+}
+.popup .wrap .top{
+    padding:0.9rem 0 1.5rem;
+    background-color: #fd6245;
+    color: #fff;
+    text-align: center;
+}
+.popup .wrap .top p{
+    margin: 0;
+    letter-spacing: 2px;
+    font-size: 1rem;
+}
+.popup .wrap .top image{
+    width: 2.75rem;
+    margin: 0 auto;
+    padding-top:0.8125rem;
+}
+.popup .wrap .text-con{
+    height: 95%;
+    overflow: auto;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    letter-spacing: 1px;
+    padding: 0 1.875rem;
+}
+.popup .wrap .text-con view{
+    font-size: 1rem;
+    margin: 0;
+    padding:0.8rem 0 0.2rem;
+}
+.popup .wrap .text-con  p{
+    font-size: 0.75rem;
+    text-indent: 1.5rem;
+    margin: 0;
+    color: #535353;
+}
+.popup .wrap .btn-box{
+    padding: 0.9375rem 0.9375rem 0.625rem;
+}
+.popup .wrap .btn-box .btn{
+    height: 3rem;
+    color: #fff;
+    text-align: center;
+    background: #fd4b33;
+    line-height: 3rem;
+    font-size: 1.125rem;
+    border-radius: 3px;
+    padding: 0;
+}
+.check-box b {
+    font-style: normal;
+    font-weight: normal;
+    color: #f5a218;
+    vertical-align: middle;
+}
+.checkbox{
+    zoom: 75%;
+}
+.yzmlist{
+    position: relative;
+}
+.numInput{
+    width: 70%;
+}
+.yzm{
+    position: absolute;
+    right: 20rpx;
+    color: #535353 !important;
+}

@@ -1,0 +1,208 @@
+/* pages/memberhistory/memberhistory.wxss */
+
+page, .pages {
+  width: 100%;
+  height: 100%;
+  background: #f7f3f3;
+}
+
+.memberHead {
+  position: relative;
+  width: 100%;
+  height: 250rpx;
+}
+
+.memberBj {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 300rpx;
+}
+
+.mHcont {
+  position: relative;
+  z-index: 99;
+  margin-top: -50rpx;
+}
+
+.mHcL {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  background: rgba(255, 255, 255, 0.5);
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+
+.mHcL .urlImg {
+  width: 92rpx;
+  height: 92rpx;
+  border-radius: 46rpx;
+  position: relative;
+}
+
+.mHcL .urlImg .tx {
+  width: 100%;
+  height: 100%;
+  border-radius: 46rpx;
+}
+
+.mHcL .urlImg .vip {
+  position: absolute;
+  bottom: 0;
+  right: -10rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.mHcR {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  margin-left: 40rpx;
+}
+
+.hyjf {
+  font-size: 35rpx;
+  color: #fff;
+}
+
+/* 积分等级 */
+
+.jfdjMain {
+  background: #fff;
+  margin: 30rpx 30rpx 15rpx 30rpx;
+  padding: 24rpx;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+}
+
+.grade {
+  margin-left: 94rpx;
+  font-size: 24rpx;
+  color: #c0c0c0;
+}
+
+.progress {
+  position: relative;
+  height: 15rpx;
+}
+
+.uppor {
+  width: 20%;
+  height: 15rpx;
+  background: linear-gradient(to left, #fee300, #e60212);
+  border-radius: 8rpx;
+  position: absolute;
+  z-index: 15;
+  top: 0;
+  left: 0;
+}
+
+.downpor {
+  width: 100%;
+  height: 15rpx;
+  background: #e3e2e2;
+  border-radius: 8rpx;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+}
+
+.vipList {
+  padding-top: 30rpx;
+}
+
+.vmsg {
+  width: 28rpx;
+}
+
+/* 积分等级End */
+
+/* 如何升级 */
+
+.jfHow {
+  margin: 15rpx 30rpx 15rpx 30rpx;
+  background: #fff;
+  padding: 18rpx;
+  border-radius: 14rpx;
+  padding-right: 0;
+  padding-top: 0;
+}
+
+.jfHead {
+  color: #c0c0c0;
+  font-size: 24rpx;
+  border-bottom: 1px solid #c0c0c0;
+  padding: 10rpx 0;
+}
+
+.jfHowList {
+  font-size: 24rpx;
+  color: #454545;
+  padding: 20rpx 0;
+}
+
+.jfHowList view {
+  padding: 4rpx 0;
+}
+
+/* 如何升级End */
+
+/* 如何获得成长值 */
+
+.growth {
+  margin: 10rpx 30rpx 30rpx 30rpx;
+  padding: 18rpx;
+  padding-right: 0;
+  padding-top: 0; 
+  background: #fff;
+  border-radius: 14rpx;
+  margin-bottom: 0;
+  box-sizing: border-box;
+}
+
+.growth1 {
+  width: 100%;
+  height: 350rpx;
+  box-sizing: border-box;
+  padding: 15rpx;
+}
+
+.growthList {
+  height: 80rpx;
+}
+
+.zhuo {
+  width: 14rpx;
+   height: 80rpx; 
+  /* display: block; */
+}
+
+.growL {
+  display: -webkit-flex;
+  display: flex;
+}
+
+.growMsg {
+  margin-left: 26rpx;
+}
+
+.growL .growlName {
+  font-size: 24rpx;
+  color: #454545;
+}
+
+.growL .growlTime {
+  font-size: 20rpx;
+  color: #a3a3a3;
+  flex-shrink: 0;
+}
+
+.growR .growrXq {
+  color: #f48008;
+  font-size: 22rpx;
+}
+
+/* 如何获得成长值End */

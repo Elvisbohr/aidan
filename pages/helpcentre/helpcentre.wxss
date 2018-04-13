@@ -1,0 +1,24 @@
+/* pages/helpcentre/helpcentre.wxss */
+
+.pages{
+  background: #f8f8f8;
+}
+.helpMain{
+  padding: 30rpx;
+}
+.helpHead{
+  text-align: center;
+  font-size: 36rpx;
+}
+.helpList{
+  margin-top: 16rpx;
+  font-size: 28rpx;
+}
+.helpList view:first-of-type{
+  font-size: 32rpx;
+  margin-bottom: 14rpx;
+}
+.helptit:first-of-type{
+  color: red;
+  font-size: 36rpx !important;
+}

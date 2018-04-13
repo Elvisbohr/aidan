@@ -1,0 +1,21 @@
+/* pages/legalNotices/legalNotices.wxss */
+
+.tit {
+  margin-top: 20rpx;
+  font-size: 40rpx;
+  text-align: center;
+}
+
+.itemTit {
+  padding: 0 15px;
+  font-size: 32rpx;
+  font-weight: bold;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.itemList {
+  padding: 0 20px;
+  font-size: 32rpx;
+  margin-bottom: 14rpx;
+}

@@ -1,0 +1,59 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/register/register",
+        "pages/mine/mine",
+        "pages/membercenter/membercenter",
+        "pages/memberhistory/memberhistory",
+        "pages/menu/menu",
+        "pages/settle/settle",
+        "pages/collect/collect",
+        "pages/orderform/orderform",
+        "pages/coupon/coupon",
+        "pages/orderparticulars/orderparticulars",
+        "pages/details/details",
+        "pages/userName/userName",
+        "pages/userBirthday/userBirthday",
+        "pages/userPhone/userPhone",
+        "pages/switchcity/switchcity",
+        "pages/helpcentre/helpcentre",
+        "pages/agreementList/agreementList",
+        "pages/agreement/agreement",
+        "pages/merchantServiceAgreement/merchantServiceAgreement",
+        "pages/legalNotices/legalNotices",
+        "pages/shippingAddress/shippingAddress",
+        "pages/newShippingAddress/newShippingAddress",
+        "pages/logs/logs"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#e23237",
+        "navigationBarTitleText": "",
+        "navigationBarTextStyle": "#fff"
+    },
+    "tabBar": {
+        "color": "#666666",
+        "selectedColor": "#666666",
+        "borderStyle": "white",
+        "list": [
+            {
+                "selectedIconPath": "images/homeT.png",
+                "iconPath": "images/home.png",
+                "pagePath": "pages/index/index",
+                "text": "首页"
+            },
+            {
+                "selectedIconPath": "images/collectT.png",
+                "iconPath": "images/collect.png",
+                "pagePath": "pages/collect/collect",
+                "text": "收藏"
+            },
+            {
+                "selectedIconPath": "images/meT.png",
+                "iconPath": "images/me.png",
+                "pagePath": "pages/mine/mine",
+                "text": "我的"
+            }
+        ]
+    }
+}

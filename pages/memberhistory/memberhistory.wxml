@@ -1,0 +1,132 @@
+<!--pages/memberhistory/memberhistory.wxml-->
+<view class="pages">
+  <!-- 头部 -->
+  <view class="memberHead flex vc hc">
+    <image class="memberBj" src="../../images/hy/hybj1.png"></image>
+    <view class="mHcont flex ">
+      <view class="mHcL vc hc">
+        <view class="urlImg">
+          <image class="tx" src="{{userInfo.avatarUrl}}"></image>
+          <image class="vip" src="../../images/hy/g0.png"></image>
+        </view>
+
+      </view>
+      <view class="mHcR vc ha hh">
+        <view class="hyjf">会员积分: <text> 9999</text></view>
+      </view>
+    </view>
+  </view>
+  <!-- 头部End -->
+  <!-- 积分等级 -->
+  <view class="jfdjMain">
+    <view class="grade">
+      168/500
+    </view>
+    <view class="progress">
+      <view class="uppor"></view>
+      <view class="downpor"></view>
+    </view>
+    <view class="vipList flex vc hb">
+      <image class="vmsg" mode="widthFix" src="../../images/hy/v0.png"></image>
+      <image class="vmsg" mode="widthFix" src="../../images/hy/vh1.png"></image>
+      <image class="vmsg" mode="widthFix" src="../../images/hy/v2.png"></image>
+      <image class="vmsg" mode="widthFix" src="../../images/hy/v3.png"></image>
+      <image class="vmsg" mode="widthFix" src="../../images/hy/v4.png"></image>
+      <image class="vmsg" mode="widthFix" src="../../images/hy/v5.png"></image>
+      <image class="vmsg" mode="widthFix" src="../../images/hy/v6.png"></image>
+    </view>
+
+  </view>
+  <!-- 积分等级End -->
+  <view class="jfHow">
+    <view class="jfHead">
+      如何获得成长值
+    </view>
+    <view class="jfHowList">
+      <view>每天最高可获得000点成长值，获取成长值方式如下：</view>
+      <view>1.购买金额1:1转化为成长值</view>
+      <view>2.可通过购物、评价、登录等途径获得成长值</view>
+    </view>
+  </view>
+  <view class="growth">
+    <view class="jfHead">
+      成长值
+    </view>
+    <scroll-view  class="growth1" scroll-y>
+      <view class="growthList flex hb">
+        <view class="growL">
+          <image class="zhuo" src="../../images/hy/zhuo.png"></image>
+          <view class="growMsg">
+            <view class="growlName">订餐</view>
+            <view class="growlTime">2017-07-09 <text>18:33:31</text></view>
+          </view>
+        </view>
+        <view class="growR">
+          <view class="growrXq">+20成长值</view>
+        </view>
+      </view>
+      
+      <view class="growthList flex hb">
+        <view class="growL">
+          <image class="zhuo" src="../../images/hy/zhuo.png"></image>
+          <view class="growMsg">
+            <view class="growlName">订餐</view>
+            <view class="growlTime">2017-07-09 <text>18:33:31</text></view>
+          </view>
+        </view>
+        <view class="growR">
+          <view class="growrXq">+20成长值</view>
+        </view>
+      </view>
+      <view class="growthList flex hb">
+        <view class="growL">
+          <image class="zhuo" src="../../images/hy/zhuo.png"></image>
+          <view class="growMsg">
+            <view class="growlName">订餐</view>
+            <view class="growlTime">2017-07-09 <text>18:33:31</text></view>
+          </view>
+        </view>
+        <view class="growR">
+          <view class="growrXq">+20成长值</view>
+        </view>
+      </view>
+      <view class="growthList flex hb">
+        <view class="growL">
+          <image class="zhuo" src="../../images/hy/zhuo.png"></image>
+          <view class="growMsg">
+            <view class="growlName">订餐</view>
+            <view class="growlTime">2017-07-09 <text>18:33:31</text></view>
+          </view>
+        </view>
+        <view class="growR">
+          <view class="growrXq">+20成长值</view>
+        </view>
+      </view>
+
+      <view class="growthList flex hb">
+        <view class="growL">
+          <image class="zhuo" src="../../images/hy/zhuo.png"></image>
+          <view class="growMsg">
+            <view class="growlName">订餐</view>
+            <view class="growlTime">2017-07-09 <text>18:33:31</text></view>
+          </view>
+        </view>
+        <view class="growR">
+          <view class="growrXq">+20成长值</view>
+        </view>
+      </view>
+      <view class="growthList flex hb">
+        <view class="growL">
+          <image class="zhuo" src="../../images/hy/zhuo.png"></image>
+          <view class="growMsg">
+            <view class="growlName">订餐</view>
+            <view class="growlTime">2017-07-09 <text>18:33:31</text></view>
+          </view>
+        </view>
+        <view class="growR">
+          <view class="growrXq">+20成长值</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

@@ -1,0 +1,16 @@
+<!--pages/userName/userName.wxml-->
+<view class="pages">
+  <view class="List">
+    <view class="listL">
+      <text>用户名:</text>
+      <input class="userName" bindblur="userName" value="{{userName}}" />
+    </view>
+    <view class="listR">
+      <icon bindtap="clear" type="clear" size="20" color="#cccccc" />
+    </view>
+  </view>
+
+  <view class="tips">
+    限4-16个字符，一个汉字为2个字符
+  </view>
+</view>

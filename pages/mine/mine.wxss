@@ -1,0 +1,85 @@
+/* pages/mine/mine.wxss */
+page,.pages{
+  width: 100%;
+  height: 100%;
+  background: #efefef;
+}
+.mineHead{
+  position: relative;
+  width: 100%;
+  height: 350rpx;
+  color: #fff;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  z-index: 99;
+  align-items: center;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.mineTx{
+  width: 160rpx;
+  height: 160rpx;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius:80rpx; 
+}
+.mineTx image{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 75rpx;
+  position: relative;
+  z-index: 9;
+}
+.mineBj{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 350rpx;
+}
+.mineName{
+  font-size: 32rpx;
+  margin-top: 20rpx;
+}
+.minexx{
+  font-size: 28rpx;
+  margin-top: 14rpx;
+}
+.mineList{
+  height: 80rpx;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20rpx;
+  background: #fff;
+  border-bottom: 1px solid #efefef;
+}
+.mineList.mb15{
+  margin-bottom: 15rpx;
+}
+.mineMsg{
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+}
+.mineMsgImg{
+  width: 46rpx;
+  /* height: 55rpx; */
+  display: -webkit-flex;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  margin-right: 10rpx;
+}
+.mineMsgTxt{
+  color: #666666;
+  font-size: 28rpx;
+}
+.mineRimg{
+  width: 26rpx;
+}

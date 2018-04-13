@@ -1,0 +1,17 @@
+<!--pages/agreement/agreement.wxml-->
+<view class='pages'>
+  <block wx:for="{{agreement}}" wx:for-item="i">
+    <view class='tit'>
+      {{i.tit}}
+    </view>
+    <view class='itemList'>{{i.msg}}</view>
+    <block wx:for="{{i.itemCont}}" wx:for-item="j">
+    <view class='cont'>
+      <view class='itemTit'>{{j.itemTit}}</view>
+      <block wx:for="{{j.itemList}}" wx:for-item="l">
+      <view class='itemList'>{{l}}</view>    
+      </block>
+    </view>
+    </block>
+  </block>
+</view>
