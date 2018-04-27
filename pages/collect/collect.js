@@ -119,7 +119,7 @@ Page({
                 console.log(res)
                 if (res.data.data) {
                     wx.navigateTo({
-                        url: '../menu/menu?id=' + id,
+                        url: '../menu/menu?id=' + id + '&shopType=1',
                     })
                 } else {
                     console.log(2)

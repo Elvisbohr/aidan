@@ -5,7 +5,7 @@ App({
         total: {},
         adminAddress: "https://ad.djfy365.com/api",
         // adminAddress: "https://ad.kulizhi.com/api",
-        // adminAddress:  "http://192.168.1.135:8080/api",
+        // adminAddress:  "http://192.168.1.185:8080/api",
 
         adminAddressImg: "https://ad.djfy365.com",
         // adminAddressImg: "https://ad.kulizhi.com",
@@ -35,11 +35,12 @@ App({
                     },
                     header: { "content-type": 'application/x-www-form-urlencoded' },
                     success: res => {
-                        // console.log('获取openid');
+                        console.log('获取openid');
                         // console.log(res);
                         var user = res.data.data;
                         // console.log(res.data.data.openid);
                         wx.setStorageSync('user', user);//本地存储userID  
+                        console.log(that)
                         that.globalData.openId = res.data.data.openid   //全局储存openId
                         wx.getUserInfo({
                             success: function (res) {

@@ -31,7 +31,6 @@
     </swiper>
     <!--轮播图End-->
     <!--店铺展示-->
-
     <scroll-view scroll-y bindscrolltolower="loadMore" style="width:100%;height:{{mainHieght}}px;">
         <block>
             <block wx:for="{{merchants}}" wx:for-item="i">
@@ -41,18 +40,32 @@
                     <image wx:else class="shopleft" src="{{appImg}}{{i.shopImg}}"></image>
                     <!-- </view> -->
                     <view class="shopRight">
-                        <view class="shopname">{{i.shopName}}</view>
-                        <view class="shopselect">
+                        <view class="shopname flex vc hb">
+                            <view>{{i.shopName}}</view>
                             <view class="select onOpen" wx:if="{{i.isOpen == 1}}">营业中</view>
                             <view class="select onff" wx:if="{{i.isOpen == 2}}">休息中</view>
-                            <view class="select onChit" wx:if="{{i.coupon == 1}}">¥</view>
-                            <view class="select onMinus" wx:if="{{i.moneyOff == 1}}">减</view>
-                            <view class="select onDiscount" wx:if="{{i.discount == 1}}">折</view>
                         </view>
-                        <view class="shopsite flex vc hb">
+                        <view class="shopselect flex vc">  
+                            <view class='distr'>                          
+                            <view  wx:if="{{i.distribute == 1}}">起送 ¥{{i.distributeLeastmoney}} <text>|</text> 配送 ¥{{i.distributeMoney}}</view>
+                            </view>
+                            <view class="km">{{i.distance}}</view>                            
+                        </view>
+                        <view class="shopsite flex vc hb" wx:if="{{i.prefernum > 0}}">
                             <!-- <view class='Itemsaddres'>{{i.address}}</view> -->
-                            <view class='Itemsaddres'>{{i.detailedAddress}}</view>
-                            <view class="km">{{i.distance}}</view>
+                            <view class="Itemsaddres {{i.addtes? 'on':''}}" data-index='{{index}}' catchtap='addtes'>
+                                <view class='itemPir flex vc' wx:if="{{i.couponstr != ''}}">
+                                    <view class="pirIcon y">¥</view>{{i.couponstr}}
+                                </view>
+                                <view class='itemPir flex vc' wx:if="{{i.moneyOffstr != ''}}">
+                                    <view class="pirIcon z">减</view>{{i.moneyOffstr}}
+                                </view>
+                                <view class='itemPir flex vc' wx:if="{{i.discountstr != ''}}">
+                                    <view class="pirIcon j">折</view>{{i.discountstr}}
+                                </view>
+                            </view>
+                            <view class='flex vc'>{{i.prefernum}}种优惠 <view wx:if="{{i.prefernum > 1}}" class="jaodu {{i.addtes? 'raus':''}}">∨</view></view>
+                   
                         </view>
                     </view>
                 </view>

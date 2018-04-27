@@ -395,7 +395,7 @@ page, .pages {
 
 .menu-item {
   width: 180rpx;
-  height: 105rpx;
+  min-height: 105rpx;
   color: #fff;
   display: flex;
   justify-content: center;
@@ -1034,4 +1034,21 @@ page, .pages {
     position: absolute;
     top: 20rpx;
     right: 20rpx;
+}
+/* 菜品活动 */
+.select{
+  color: #fff;
+  width: 44rpx;
+  height: 36rpx;
+  border-radius: 8rpx;
+  margin-right:16rpx;
+}
+.onChit{
+  background: #ff8688;
+}
+.onMinus{
+  background: #fbaf33;
+}
+.onDiscount{
+  background: #6dd36b;
 }

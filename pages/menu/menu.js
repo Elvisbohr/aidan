@@ -49,7 +49,14 @@ Page({
     onLoad: function (options) {
         var that = this;
         // 获取商铺基本信息接口
-        console.log(options)
+        // console.log(options)
+        //判断用户进入方式(如果是1为正常进入非1位二维码进入删除菜品缓存)
+        if (options.shopType != 1){
+            wx.setStorage({
+                key: 'total',
+                data: { count: 0, price: 0, list: [] },
+            })
+        };
         var takeid = [];
         takeid.id = options.id;
         //获取用户头像,外卖费用等
@@ -69,12 +76,10 @@ Page({
         isData.openid = app.globalData.openId;
         that.isCollect(isData)
         wx.getSystemInfo({  //获取手机信息(宽高等)
-            success: function (res) {
-                // console.log(res)
+            success: function (res){
                 that.setData({
-                    menuhieght: res.windowHeight - 174,
-                });
-                // console.log(that.data.menuhieght)
+                    menuhieght: res.windowHeight - 165
+                });                
             }
         });
         //判断是否有优惠活动
@@ -405,7 +410,7 @@ Page({
         var imgtype = e.currentTarget.dataset.img;  //判断点击的是那个资质照片
         console.log(imgtype)
         if (imgtype == "businessLicenseImg") {
-            if (that.data.shopInfo.businessLicenseImg != "" && that.data.shopInfo.businessLicenseImg != undefined) {
+            if (that.data.shopInfo.businessLicenseImg != "" && that.data.shopInfo.businessLicenseImg != undefined && that.data.shopInfo.businessLicenseImg != null) {
                 console.log('商户有上传图片');
                 var img = that.data.appImg + that.data.shopInfo.businessLicenseImg; //
                 var imgs = img.split();
@@ -415,7 +420,7 @@ Page({
                 })
             }
         } else if (imgtype == "licenceImg") {
-            if (that.data.shopInfo.licenceImg != "" && that.data.shopInfo.licenceImg != undefined) {
+            if (that.data.shopInfo.licenceImg != "" && that.data.shopInfo.licenceImg != undefined && that.data.shopInfo.licenceImg != null) {
                 console.log('商户有上传图片');
                 var img = that.data.appImg + that.data.shopInfo.licenceImg; //
                 var imgs = img.split();
@@ -1093,6 +1098,7 @@ Page({
             shopActivity: false,
         })
     },
+    
     // 转发
     onShareAppMessage: function (res) {
         var that = this,

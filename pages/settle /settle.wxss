@@ -40,7 +40,7 @@ page, .pages {
 }
 
 .foodList {
-    min-height: 90rpx;
+    height: 90rpx;
     font-size: 28rpx;
     color: #454545;
     padding: 0 30rpx;

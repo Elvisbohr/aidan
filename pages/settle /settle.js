@@ -1,4 +1,5 @@
-//pages/settle/settle.js
+var app = getApp()
+// pages/settle/settle.js
 Page({
     data: {
         upmore: true,    //查看全部已点餐品
@@ -13,22 +14,23 @@ Page({
         waytachType: 1,        //上传接口(就餐类型 1堂食 2自取 3外卖)
         submit: true,      //判断点击提交订单
     },
+
     onLoad: function (options) {
         // console.log(options)
         var that = this;
         var shopName = app.globalData.shopName;     //从全局里取出店铺名
         var distribute = app.globalData.takeout.distribute;     //从全局里取出是否能外卖
-        if (distribute == 1) {                           //判断是否开启了外卖功能(1开启2未开启)
-            var distributeMoney = app.globalData.takeout.distributeMoney;     //从全局里取出外卖费
-            var distributeLeastmoney = app.globalData.takeout.distributeLeastmoney  //外卖起送价
-            // console.log(shopName)
-            that.setData({
-                distributeMoney: distributeMoney,   //外卖费
-                distributeLeastmoney: distributeLeastmoney, //起送费
-            })
+        if (distribute == 1){                           //判断是否开启了外卖功能(1开启2未开启)
+        var distributeMoney = app.globalData.takeout.distributeMoney;     //从全局里取出外卖费
+        var distributeLeastmoney = app.globalData.takeout.distributeLeastmoney  //外卖起送价
+        // console.log(shopName)
+        that.setData({
+            distributeMoney: distributeMoney,   //外卖费
+            distributeLeastmoney: distributeLeastmoney, //起送费
+        })
         }
         console.log(distributeMoney)
-
+        
         //获取当前时间戳  
         var timestamp = Date.parse(new Date());
         that.setData({
@@ -129,16 +131,11 @@ Page({
                     shopid: options.shopId,
 
                 });
-                //声明该页面修正后的菜品列表
-                var goodsdata = submitshop
-                that.getGoods(goodsdata)
-
                 //使用用户优惠活动接口
                 var actdata = {};
                 actdata.openid = app.globalData.openId;
                 actdata.shopId = options.shopId;
-                actdata.total = submitshop.price;
-                actdata.goodsList = that.data.goods;
+                actdata.total = submitshop.price
                 that.upActivity(actdata);
             },
         });
@@ -202,7 +199,7 @@ Page({
                     icon: 'loading',
                     duration: 2000
                 });
-            } else {
+            } else {               
                 //调取收货地址接口
                 this.getDeliveryAddress();
                 upActivity.payMoney = that.data.wsprice;
@@ -242,7 +239,6 @@ Page({
         var actdata = {};
         actdata.openid = app.globalData.openId;     //用户openid
         actdata.shopId = that.data.shopid;          //商铺id
-        actdata.goodsList = that.data.goods;
         actdata.total = that.data.submitshop.price; //订单总价
         actdata.discount_money_Type = preferentialType; //优惠活动当前选中项   
         if (that.data.tachcouId != null) {
@@ -263,7 +259,6 @@ Page({
         var actdata = {};
         actdata.openid = app.globalData.openId;     //用户openid
         actdata.shopId = that.data.shopid;          //商铺id
-        actdata.goodsList = that.data.goods;
         actdata.total = that.data.submitshop.price  //订单总价
         actdata.couponId = couponId         //代金券当前选中项    
         if (that.data.tachdisId != null) {
@@ -277,8 +272,8 @@ Page({
         wx.request({
             url: app.globalData.adminAddress + '/applet_customer/calculateAmount',
             data: data,
-            method: "POST",
-            // header: { 'content-type': 'application/x-www-form-urlencoded' },
+            method: "GET",
+            header: { 'content-type': 'application/x-www-form-urlencoded' },
             success: function (res) {
                 console.log(data.discount_money_Type == undefined)
                 wx.hideLoading();
@@ -329,6 +324,10 @@ Page({
                 var preferentials = [];     //声明要上传接口所用数组
                 var actIndex = that.data.actIndex,
                     couIndex = that.data.couIndex;
+                // console.log(discount[actIndex])     
+                // console.log(discount[actIndex].id)     
+                // console.log(coupons[couIndex])     
+                // console.log(coupons[couIndex].preferentialType)
                 if (discount[actIndex] != undefined) {
                     if (discount[actIndex].id != null) {
                         console.log("未选择活动无优惠")
@@ -397,11 +396,16 @@ Page({
             }
         })
     },
-    // 获取菜品类别
-    getGoods: function (goodsdata) {
-        var that = this,
-            goods = [],    //声明需要上传的数组
-            submitshop = goodsdata;   //声明已购菜品总数组
+    // 提交订单
+    submitOrder: function (e) {
+        // console.log(e)
+        var that = this;
+        var result = this.checkPhone(e.detail.value.telphone);  //判断手机号是否正确
+        var cirnum = e.detail.value.cirnum;     //填写的桌号
+        var note = e.detail.value.note;         //填写备注
+        var telphone = e.detail.value.telphone; //填写手机号
+        var goods = [];     //声明需要上传的数组
+        var submitshop = that.data.submitshop   //声明已购菜品总数组
         for (var i = 0; i < submitshop.list.length; i++) {  //循环列表累加
             // 判断是否是有规格菜品              
             if (submitshop.list[i].standard == undefined) {     //无规格的菜品    
@@ -437,52 +441,6 @@ Page({
                 goods: goods,
             })
         };
-    },
-    // 提交订单
-    submitOrder: function (e) {
-        // console.log(e)
-        var that = this;
-        var result = this.checkPhone(e.detail.value.telphone);  //判断手机号是否正确
-        var cirnum = e.detail.value.cirnum;     //填写的桌号
-        var note = e.detail.value.note;         //填写备注
-        var telphone = e.detail.value.telphone; //填写手机号
-        // var goods = [];     //声明需要上传的数组
-        // var submitshop = that.data.submitshop   //声明已购菜品总数组
-        // for (var i = 0; i < submitshop.list.length; i++) {  //循环列表累加
-        //     // 判断是否是有规格菜品              
-        //     if (submitshop.list[i].standard == undefined) {     //无规格的菜品    
-        //         var upgoods = {}; //声明上传数组的对象                                                                    
-        //         //无规格菜品压入接口数组
-        //         upgoods.boxPrice = submitshop.list[i].boxPrice;       //餐盒费
-        //         upgoods.goodsName = submitshop.list[i].name;       //菜品名称
-        //         upgoods.goodsId = submitshop.list[i].id;     //菜品Id
-        //         upgoods.num = submitshop.list[i].count;  //菜品数量
-        //         // upgoods.price = submitshop.list[i].price;    //菜品单价
-        //         upgoods.price = submitshop.list[i].allfoodprice;    //菜品单个总价
-        //         goods.push(upgoods)
-        //     } else {                                        //   有规格的菜品
-        //         for (var j = 0; j < submitshop.list[i].standard.length; j++) {
-        //             console.log(j)
-        //             var upgoods = {}; //声明上传数组的对象
-        //             upgoods.boxPrice = submitshop.list[i].boxPrice; //餐盒费  
-        //             upgoods.goodsName = submitshop.list[i].name;       //菜品名称                    
-        //             upgoods.goodsFlavorId = submitshop.list[i].standard[j].flavors.id;   //菜品口味id
-        //             upgoods.goodsFlavorName = submitshop.list[i].standard[j].flavors.name;   //菜品口味名称
-        //             upgoods.goodsId = submitshop.list[i].id;    //菜品Id
-        //             upgoods.goodsSpecificationId = submitshop.list[i].standard[j].specifications.id; //菜品规格Id
-        //             upgoods.goodsSpecificationName = submitshop.list[i].standard[j].specifications.name; //菜品规格名称
-        //             upgoods.num = submitshop.list[i].standard[j].count;  //菜品数量
-        //             // upgoods.price = submitshop.list[i].standard[j].specifications.price //菜品单价.
-        //             upgoods.price = submitshop.list[i].standard[j].allfoodprice //菜品单个总价.
-        //             goods.push(upgoods)
-        //         };
-
-        //     }
-        //     console.log(goods)
-        //     that.setData({
-        //         goods: goods,
-        //     })
-        // };
         if (e.detail.value.telphone === "") {
             wx.showToast({
                 title: '请填写手机号码',
@@ -602,7 +560,7 @@ Page({
                     that.setData({    //重置提交按钮
                         // submit: true
                     })
-                } else {
+                }else{
                     console.log('不够')
                     wx.showToast({
                         title: res.data.msg,

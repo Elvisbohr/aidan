@@ -15,7 +15,29 @@ Page({
         isMore: false,
         moreTit: '加载更多',
         isRequest: true,
+        addtes: false,  //是否显示全部活动
     },
+    onLoad: function (options) {
+        console.log('onLoad')
+        var that = this;
+        that.getCoordinates(); //获取当前城市
+        //获取手机信息(宽高等)
+        wx.getSystemInfo({
+            success: function (res) {
+                console.log(res)
+                that.setData({
+                    appImg: app.globalData.adminAddressImg,
+                    mainHieght: res.windowHeight - 250,
+                });
+                // console.log(that.data.mainHieght)
+            }
+        });
+
+        that.orderList(); //广告轮播图
+
+
+    },
+
     city: function (e) {
         console.log("暂未开发")
         //跳转至选择城市页面正在架设
@@ -45,140 +67,61 @@ Page({
         that.getMerchantList(data)
     },
     // 获取当前城市位置与点击选取城市
-    // getCoordinates: function (options) {
-    //     // console.log(options.city)
-    //     var data = {};
-    //     if (options.city) {            
-    //         data.city = options.city;
-    //         this.setData(data);
-    //         this.isOpenid(data);
-    //     } else {
-    //         var myAmapFun = new amapFile.AMapWX({ key: app.globalData.gdxcxKey });
-    //         var that = this;
-    //         // myAmapFun.getRegeo({
-    //         //     success: function (res) {
-    //         //         console.log('获取当前位置')
-    //         //         var data = {};
-    //         //         if (options.city) {
-    //         //             data.city = options.city;
-    //         //             that.setData({
-    //         //                 'city': options.city,
-    //         //                 'citys':[options.city,'测试']
-    //         //             });
-    //         //         } else {
-    //         //             that.setData({
-    //         //                 'city': res[0].regeocodeData.addressComponent.city,
-    //         //                 citys: [res[0].regeocodeData.addressComponent.city, '测试']
-
-    //         //             });
-    //         //             data.lat = res[0].latitude;
-    //         //             data.lon = res[0].longitude;
-    //         //             data.keywords = that.data.searchTerm;
-    //         //             app.globalData.lat = res[0].latitude;
-    //         //             app.globalData.lon = res[0].longitude;
-    //         //         }
-    //         //         //成功回调
-    //         //         that.setData({
-    //         //             lat : res[0].latitude,
-    //         //             lon : res[0].longitude,
-    //         //         });
-    //         //         that.isOpenid(data);
-    //         //     },
-    //         //     fail: function (info) {
-    //         //         wx.showToast({
-    //         //             title: '网络错误',
-    //         //         });
-    //         //     }
-    //         // });
-
-
-    //     };
-    // },
     // 使用腾讯地图获取城市
-    getCoordinates: function (options) {
+    getCoordinates: function () {
         var that = this,
-        // 实例化腾讯地图API核心类
-        qqmapsdk = new QQMapWX({
-            key: app.globalData.qqxcxKey // 必填
-        }),
-        data = {};
-        if (options.city) {
-            data.city = options.city;
-            this.setData(data);
-            this.isOpenid(data);
-        } else {
-            
-            //1、获取当前位置坐标
-            wx.getLocation({
-                type: 'wgs84',
-                success: function (res) {
-                    var data = {};
-                    if (options.city) {
-                        //2.如果本地存有城市
-                        data.city = options.city;
+            // 实例化腾讯地图API核心类
+            qqmapsdk = new QQMapWX({
+                key: app.globalData.qqxcxKey // 必填
+            }),
+            data = {};
+
+        //1、获取当前位置坐标
+        wx.getLocation({
+            type: 'wgs84',
+            success: function (res) {
+                var data = {};
+                //3、根据坐标获取当前位置名称，显示在顶部:腾讯地图逆地址解析
+                console.log(res)
+                qqmapsdk.reverseGeocoder({
+                    location: {
+                        latitude: res.latitude,
+                        longitude: res.longitude
+                    },
+                    success: function (addressRes) {
+                        var city = addressRes.result.address_component.city;
                         that.setData({
-                            'city': options.city,
-                            'citys': [options.city, '测试']
-                        });
-                    } else {
-                        //3、根据坐标获取当前位置名称，显示在顶部:腾讯地图逆地址解析
-                        console.log(res)
-                        qqmapsdk.reverseGeocoder({
-                            location: {
-                                latitude: res.latitude,
-                                longitude: res.longitude
-                            },
-                            success: function (addressRes) {
-                                var city = addressRes.result.address_component.city;
-                                that.setData({
-                                    'city': city,
-                                    citys: [city, '测试'],
-                                });
-                            }
+                            'city': city,
+                            citys: [city, '测试'],
                         });
                         data.lat = res.latitude;
                         data.lon = res.longitude;
+                        data.city = city;
                         data.keywords = that.data.searchTerm;
                         app.globalData.lat = res.latitude;
                         app.globalData.lon = res.longitude;
-                    };
-                    //成功回调
-                    that.setData({
-                        lat: res.latitude,
-                        lon: res.longitude,
-                    });
-                    that.isOpenid(data);
-                    
-                },
-                fail: function (info) {
-                    wx.showToast({
-                        title: '网络错误',
-                    });
-                }
-            })
-        }
-    },
-    onLoad: function (options) {
-        console.log('onLoad')
-        var that = this;
-        // console.log(options.city)
-        that.getCoordinates(options); //获取当前城市
-        //获取手机信息(宽高等)
-        wx.getSystemInfo({
-            success: function (res) {
-                console.log(res)
-                that.setData({
-                    appImg: app.globalData.adminAddressImg,
-                    mainHieght: res.windowHeight - 250,
+                        console.log(data);
+                        that.isOpenid(data);
+                    }
                 });
-                // console.log(that.data.mainHieght)
+                
+                //成功回调
+                that.setData({
+                    lat: res.latitude,
+                    lon: res.longitude,
+                });
+                
+
+            },
+            fail: function (info) {
+                wx.showToast({
+                    title: '网络错误',
+                });
             }
-        });
-
-        that.orderList(); //广告轮播图
-
+        })
 
     },
+    
 
     isOpenid: function (data) {
         console.log('判断openid是否存在');
@@ -191,10 +134,10 @@ Page({
                 });
                 // app.globalData.openId = res.data.openid;
                 data.openid = res.data.openid;
-                data.city = that.data.city;
+                data.city = data.city;
                 console.log('测试城市');
                 console.log(data);
-                console.log(that.data.city);
+                console.log(data.city);
                 that.getMerchantList(data);
             },
             fail: function () {
@@ -218,7 +161,7 @@ Page({
                 //如果是下拉刷新的话使用
                 wx.hideNavigationBarLoading() //完成停止加载
                 wx.stopPullDownRefresh() //停止下拉刷新
-                // console.log(res)
+                console.log(res)
                 //根据pageNum判断是从哪里调取接口(大于1为点击加载分页)
                 if (that.data.pageNum > 1) {
                     if (res.data.data.list == null) {
@@ -230,8 +173,9 @@ Page({
                         for (var i = 0; i < res.data.data.list.length; i++) {
                             merchants.push(res.data.data.list[i]);
                         }
-                        console.log(merchants)
-                        console.log('测试');
+                        for (var j = 0; j < merchants.length; j++) {
+                            merchants[j].addtes = false;
+                        }
                         that.setData({
                             pagesAll: res.data.data.pages,
                             merchants: merchants,
@@ -239,13 +183,17 @@ Page({
                         })
                     }
                 } else {
+                    var merchants = res.data.data.list;
+                    for (var j = 0; j < merchants.length; j++) {
+                        merchants[j].addtes = false;
+                    }
                     that.setData({
                         pagesAll: res.data.data.pages,
                         merchants: res.data.data.list,
                         isRequest: true
                     });
                 }
-
+                
             },
 
             fail: function () {
@@ -344,7 +292,7 @@ Page({
 
                     wx.navigateTo({
                         // url: '../menu/menu?id=' + merchants[index].id + '&name=' + merchants[index].shopName,
-                        url: '../menu/menu?id=' + merchants[index].id,
+                        url: '../menu/menu?id=' + merchants[index].id + '&shopType=1',   //shopType来判断是通过什么途径进入的
 
                     })
 
@@ -448,6 +396,16 @@ Page({
                     url: '../menu/menu?' + bluefile
                 })
             }
+        })
+    },
+    addtes: function (e) {
+        console.log(e.currentTarget.dataset.index)
+        let that = this,
+            merchants = that.data.merchants,
+            i = e.currentTarget.dataset.index;
+        merchants[i].addtes = !that.data.merchants[i].addtes
+        this.setData({
+            merchants: merchants
         })
     },
     // 转发

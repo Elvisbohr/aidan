@@ -18,7 +18,12 @@
     padding: 26rpx 30rpx;
     background: #fff;
 }
-
+.relative{
+    position: relative;
+}
+.absolute{
+    position: absolute;
+}
 .flex {
     display: box; /* OLD - Android 4.4- */
     display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
@@ -78,7 +83,10 @@
     -webkit-justify-content: center;
     justify-content: center;
 }
-
+.flex.hs{
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
 .flex.he {
     -moz-box-pack: end;
     -webkit-box-pack: flex-end;

@@ -85,7 +85,7 @@
                 <view class="foodmoney">¥{{detail.order.boxesAmount}}</view>
             </view>
             <view class="foodList" wx:if="{{detail.order.distributeAmount}}">
-                <view class="foodname">外卖费</view>
+                <view class="foodname">配送费</view>
                 <view class="foodbz"></view>
                 <view class="foodpart"></view>
                 <view class="foodmoney">¥{{detail.order.distributeAmount}}</view>

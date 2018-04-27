@@ -21,27 +21,6 @@
         <!--商铺头部End-->
         <!--优惠活动-->
         <view class='flex vc' wx:if="{{activityIndex > 0}}">
-            <!-- <view class="privilege" wx:if="{{privilege}}"> -->
-            <!-- <view class="privilege">
-                <view class="chit sImg" wx:if="{{iscoupon}}">
-                    <view class="pirIcon y">¥</view>
-                    <view class="chitCont">
-                        代金券:{{coupon}}
-                    </view>
-                </view>
-                <view class="chit sImg" wx:if="{{isdiscount}}">
-                    <view class="pirIcon z">折</view>
-                    <view class="chitCont">
-                        全场{{discount}}
-                    </view>
-                </view>
-                <view class="manjian sImg" wx:if="{{ismoneyoff}}">
-                    <view class="pirIcon j">减</view>
-                    <view class="mjCont">
-                        {{moneyoff}}
-                    </view>
-                </view>
-            </view> -->
             <!-- 滚动的活动 -->
             <view class='seamlessscrolling' bindtap='shopActivity' style='height:{{bh}}px;width:{{bw}}px;'>
                 <view style='height:{{direction=="vertical"?bh*clonestr.length:bh}}px;width:{{direction=="horizontal"?bw*clonestr.length:bw}}%;{{horizontal_dire}}:{{bl}}px;{{vertical_dire}}:{{bt}}px;'>
@@ -52,9 +31,6 @@
             <view class="Lists">
                 <view bindtap="prompt" class="sImg">
                     <view class="promptCont">{{activityIndex}}种优惠</view>
-                    <!-- <block wx:if="{{activityIndex > 0}}">
-                        <image class="simgs {{xl?'on':''}}" mode="widthFix" src="../../images/xiaj.png"></image>
-                    </block> -->
                 </view>
             </view>
         </view>
@@ -119,14 +95,12 @@
                                     <view class="shopList">
                                         <view class="shopLeft">
                                             <view class="shopName">{{item.name}}</view>
-                                            <!-- <view class="shopMoney">
-                                                <text class="yyuan">¥</text>{{item.price}}
-                                            </view> -->
-
                                         </view>
                                         <view class="shopRight">
-                                            <view class="shopMoney">
-                                                <text class="yyuan">¥</text>{{item.price}}
+                                            <view class="shopMoney flex vc">
+                                                <view class="yyuan">¥</view>{{item.price}}
+                                                <view class="select onMinus" wx:if="{{item.moneyoff == 1}}">减</view>
+                                                <view class="select onDiscount" wx:if="{{item.discount == 1}}">折</view>
                                             </view>
                                             <view class="dish-item-count" style="">
                                                 <view class="dish-item-tab">
@@ -326,9 +300,9 @@
                                 </view>
                             </view>
                             <view class="patImg">
-                                <image wx:if="{{shopInfo.businessLicenseImg !='' && shopInfo.businessLicenseImg!=undefined}}" bindtap="patImg" class="psimg" data-img="businessLicenseImg" src="{{appImg}}{{shopInfo.businessLicenseImg}}"></image>
+                                <image wx:if="{{shopInfo.businessLicenseImg !='' && shopInfo.businessLicenseImg!=null}}" bindtap="patImg" class="psimg" data-img="businessLicenseImg" src="{{appImg}}{{shopInfo.businessLicenseImg}}"></image>
                                 <image wx:else class="psimg" data-img="businessLicenseImg" src="../../images/zwsc.png"></image>
-                                <image wx:if="{{shopInfo.licenceImg !='' && shopInfo.licenceImg!=undefined}}" bindtap="patImg" class="psimg" data-img="licenceImg" src="{{appImg}}{{shopInfo.licenceImg}}"></image>
+                                <image wx:if="{{shopInfo.licenceImg !='' && shopInfo.licenceImg!=null}}" bindtap="patImg" class="psimg" data-img="licenceImg" src="{{appImg}}{{shopInfo.licenceImg}}"></image>
                                 <image wx:else class="psimg" data-img="licenceImg" src="../../images/zwsc.png"></image>
                             </view>
                         </view>
